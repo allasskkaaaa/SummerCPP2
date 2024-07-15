@@ -21,4 +21,9 @@ public class End : MonoBehaviour
 
         Debug.Log("Trigger Exit");
     }
+
+    void closeGame()
+    {
+        Application.Quit();
+    }
 }

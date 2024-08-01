@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
-    [SerializeField] public GameObject objectSpawned;
+    [SerializeField] public GameObject[] objectSpawned;
     public Transform[] spawnPoints;
+    private int randomIndex;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,7 +16,8 @@ public class SpawnManager : MonoBehaviour
     // Update is called once per frame
     void spawnObject()
     {
-        
+        randomIndex = Random.Range(0, objectSpawned.Length);
+
         if (spawnPoints.Length < 0)
         {
             Debug.Log("No spawn points assigned");
@@ -26,7 +28,10 @@ public class SpawnManager : MonoBehaviour
             Debug.Log("Object Spawned");
         }
 
-        int randomIndex = Random.Range(0, spawnPoints.Length);
-        Instantiate(objectSpawned, spawnPoints[randomIndex].position, spawnPoints[randomIndex].rotation);
+        for (int i = 0; i < spawnPoints.Length; i++)
+        {
+            Instantiate(objectSpawned[randomIndex], spawnPoints[i].position, spawnPoints[i].rotation);
+        }
+        
     }
 }

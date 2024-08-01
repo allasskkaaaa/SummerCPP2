@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
+using System.Timers;
 using UnityEngine;
 
 public class EnemyController : MonoBehaviour
@@ -7,12 +9,16 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private Transform player; // Reference to the player
     [SerializeField] private float moveSpeed = 2f; // Speed at which the enemy moves towards the player
     [SerializeField] private float stoppingDistance = 2f; // Distance at which the enemy stops moving towards the player
+    public float shootSpeed = 5.0f;
+    private float timer;
 
     private Renderer enemyRenderer;
+    private Animator anim;
 
     void Start()
     {
         enemyRenderer = GetComponent<Renderer>();
+        anim = GetComponent<Animator>();
     }
 
     void Update()
@@ -43,5 +49,15 @@ public class EnemyController : MonoBehaviour
             Quaternion targetRotation = Quaternion.LookRotation(directionToPlayer);
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 5f);
         }
+
+        timer += Time.deltaTime;
+        if (timer >= shootSpeed)
+        {
+            
+            timer = 0f;
+            anim.SetTrigger("Attack");
+            Debug.Log("Shoot");
+        }
+
     }
 }

@@ -6,6 +6,7 @@ public class Shoot : MonoBehaviour
 {
     public Transform ShootSpawn;
     public GameObject projectile;
+    
 
     // Update is called once per frame
     void Update()
@@ -13,7 +14,12 @@ public class Shoot : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             Debug.Log("Shoot");
-            Instantiate(projectile, ShootSpawn.position, ShootSpawn.rotation);
+            shoot();
         }
+    }
+
+    public void shoot()
+    {
+        Instantiate(projectile, ShootSpawn.position, ShootSpawn.rotation);
     }
 }

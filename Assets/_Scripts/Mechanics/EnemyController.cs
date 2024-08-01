@@ -19,6 +19,8 @@ public class EnemyController : MonoBehaviour
     {
         enemyRenderer = GetComponent<Renderer>();
         anim = GetComponent<Animator>();
+
+        InvokeRepeating("shoot", 2, shootSpeed);
     }
 
     void Update()
@@ -50,14 +52,10 @@ public class EnemyController : MonoBehaviour
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 5f);
         }
 
-        timer += Time.deltaTime;
-        if (timer >= shootSpeed)
-        {
-            
-            timer = 0f;
-            anim.SetTrigger("Attack");
-            Debug.Log("Shoot");
-        }
+    }
 
+    void shoot()
+    {
+        anim.SetTrigger("Attack");
     }
 }

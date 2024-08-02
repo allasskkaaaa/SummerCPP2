@@ -6,17 +6,23 @@ public class SpawnManager : MonoBehaviour
 {
     [SerializeField] public GameObject[] objectSpawned;
     public Transform[] spawnPoints;
-    private int randomIndex;
+    private int randomObjectIndex;
+    private int randomSpawnIndex;
     // Start is called before the first frame update
     void Start()
     {
         spawnObject();
     }
 
-    // Update is called once per frame
     void spawnObject()
     {
-        randomIndex = Random.Range(0, objectSpawned.Length);
+        
+
+        if (objectSpawned.Length < 0)
+        {
+            Debug.Log("No objects to spawn assigned");
+            return;
+        }
 
         if (spawnPoints.Length < 0)
         {
@@ -30,7 +36,9 @@ public class SpawnManager : MonoBehaviour
 
         for (int i = 0; i < spawnPoints.Length; i++)
         {
-            Instantiate(objectSpawned[randomIndex], spawnPoints[i].position, spawnPoints[i].rotation);
+            randomObjectIndex = Random.Range(0, objectSpawned.Length);
+            randomSpawnIndex = Random.Range(0, spawnPoints.Length);
+            Instantiate(objectSpawned[randomObjectIndex], spawnPoints[randomSpawnIndex].position, spawnPoints[randomSpawnIndex].rotation);
         }
         
     }

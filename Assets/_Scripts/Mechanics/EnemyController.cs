@@ -1,60 +1,95 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Threading;
-using System.Timers;
 using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
+    [SerializeField] Material ogMaterial; // Original material
+    [SerializeField] Material transMaterial; // Transparent Material
+    [SerializeField] Camera viewCamera; // Reference to the camera
     [SerializeField] private Transform player; // Reference to the player
+    [SerializeField] private Transform raycastOrigin; // Reference to the game object for raycasting
     [SerializeField] private float moveSpeed = 2f; // Speed at which the enemy moves towards the player
     [SerializeField] private float stoppingDistance = 2f; // Distance at which the enemy stops moving towards the player
     public float shootSpeed = 5.0f;
-    private float timer;
 
     private Renderer enemyRenderer;
     private Animator anim;
+    private bool isPlayerFacing;
 
     void Start()
     {
         enemyRenderer = GetComponent<Renderer>();
         anim = GetComponent<Animator>();
+        enemyRenderer.material = ogMaterial;
 
-        InvokeRepeating("shoot", 2, shootSpeed);
+        InvokeRepeating("Shoot", 2, shootSpeed);
     }
 
     void Update()
     {
-        //Movement
+        // Check if player is looking at the enemy
+        isPlayerFacing = IsPlayerLookingAtEnemy();
 
-        Vector3 directionToPlayer = player.position - transform.position;
-        directionToPlayer.y = 0; // Keep movement on the horizontal plane
-
-        float distanceToPlayer = directionToPlayer.magnitude;
-        directionToPlayer.Normalize();
-
-        // Check if the player is looking at the enemy
-        Vector3 playerForward = player.forward;
-        playerForward.y = 0; // Keep the check on the horizontal plane
-
-        bool isPlayerLookingAtEnemy = Vector3.Dot(playerForward, directionToPlayer) > 0.5f;
-
-        if (!isPlayerLookingAtEnemy && distanceToPlayer > stoppingDistance)
+        // Control shooting and movement based on whether the player is facing the enemy
+        if (isPlayerFacing)
         {
-            // Move towards the player
-            transform.position += directionToPlayer * moveSpeed * Time.deltaTime;
+            CancelInvoke("Shoot");
+            enemyRenderer.material = ogMaterial;
         }
-
-        // Face the player
-        if (directionToPlayer != Vector3.zero)
+        else
         {
-            Quaternion targetRotation = Quaternion.LookRotation(directionToPlayer);
-            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 5f);
+            if (!IsInvoking("Shoot"))
+            {
+                InvokeRepeating("Shoot", 2, shootSpeed);
+            }
+            enemyRenderer.material = transMaterial;
+            MoveTowardsPlayer();
         }
-
     }
 
-    void shoot()
+    private bool IsPlayerLookingAtEnemy()
+    {
+        Ray ray = new Ray(raycastOrigin.position, raycastOrigin.forward);
+        RaycastHit hit;
+
+        if (Physics.Raycast(ray, out hit))
+        {
+            if (hit.transform == transform)
+            {
+                Debug.Log("Player is looking at enemy");
+                return true;
+            }
+        }
+        Debug.Log("Player is not looking at enemy");
+        return false;
+    }
+
+    private void MoveTowardsPlayer()
+    {
+
+            // Calculate direction to player
+            Vector3 directionToPlayer = player.position - transform.position;
+            directionToPlayer.y = 0;
+
+            // Move towards the player if the distance is greater than stoppingDistance
+            if (directionToPlayer.magnitude > stoppingDistance)
+            {
+                Vector3 moveDirection = directionToPlayer.normalized * moveSpeed * Time.deltaTime;
+                transform.position += moveDirection;
+            }
+
+            // Face the player
+            if (directionToPlayer != Vector3.zero)
+            {
+                Quaternion targetRotation = Quaternion.LookRotation(directionToPlayer);
+                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 5f);
+            }
+
+        
+    }
+
+    public void Shoot()
     {
         anim.SetTrigger("Attack");
     }

@@ -3162,7 +3162,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 885230708}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.10583892, y: 0.000000008554867, z: -9.105523e-10, w: 0.99438334}
+  m_LocalRotation: {x: 0.10583892, y: 0.000000006137596, z: -6.5326583e-10, w: 0.99438334}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3602,7 +3602,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.12897578, y: 0.000000030760162, z: -0.0000000040007313, w: 0.9916478}
+  m_LocalRotation: {x: 0.12897578, y: -0.00000003051025, z: 0.000000003968227, w: 0.9916478}
   m_LocalPosition: {x: -27.094757, y: 11.730624, z: 16.240387}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3805,7 +3805,7 @@ GameObject:
   - component: {fileID: 976516095}
   - component: {fileID: 976516094}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Eyes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3820,7 +3820,7 @@ Transform:
   m_GameObject: {fileID: 976516092}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.369, z: 0.401}
+  m_LocalPosition: {x: 0, y: -0.22, z: 0.401}
   m_LocalScale: {x: 0.7192083, y: 0.45199, z: 0.56814015}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4256,7 +4256,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1156365401}
-  - component: {fileID: 1156365402}
   m_Layer: 0
   m_Name: ShootSpawn
   m_TagString: Untagged
@@ -4273,26 +4272,12 @@ Transform:
   m_GameObject: {fileID: 1156365400}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.72, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0.88}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2115523224}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1156365402
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1156365400}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9470aef65311d5f4b97d58026afcabc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ShootSpawn: {fileID: 0}
-  projectile: {fileID: 0}
 --- !u!1 &1158439873
 GameObject:
   m_ObjectHideFlags: 0
@@ -5610,6 +5595,7 @@ MeshRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: d13171ac4245d664795bb0e518218ef0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5667,11 +5653,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3afcd8e92d5dfde469b6fe3733e0cfb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ogMaterial: {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  transMaterial: {fileID: 2100000, guid: d13171ac4245d664795bb0e518218ef0, type: 2}
   viewCamera: {fileID: 963194227}
   player: {fileID: 2115523224}
+  raycastOrigin: {fileID: 976516093}
   moveSpeed: 2
   stoppingDistance: 2
-  shootSpeed: 10
+  shootSpeed: 5
 --- !u!114 &1531710172
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6787,7 +6776,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1732278150}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.13573383, y: -0.000000008523571, z: 0.0000000011677439, w: 0.99074537}
+  m_LocalRotation: {x: 0.13573383, y: 0.000000008523572, z: -0.000000001167744, w: 0.99074537}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -7885,7 +7874,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2124492350}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.12897576, y: 0.000000008531334, z: -0.000000001109603, w: 0.9916478}
+  m_LocalRotation: {x: 0.12897576, y: -0.000000007580992, z: 9.859995e-10, w: 0.9916478}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

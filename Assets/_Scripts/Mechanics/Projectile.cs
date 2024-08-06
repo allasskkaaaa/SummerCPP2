@@ -34,7 +34,20 @@ public class Projectile : MonoBehaviour
             Destroy(collision.gameObject);
             Destroy(gameObject);
         }
-            
+        else if (collision.gameObject.CompareTag("Health"))
+        {
+            Debug.Log("Health increased");
+            GameManager.Instance.lives += 10;
+            Destroy(collision.gameObject);
+            Destroy(gameObject);
+        }
+        else if (collision.gameObject.CompareTag("Score"))
+        {
+            Debug.Log("Score increased");
+            GameManager.Instance.score += 10;
+            Destroy(collision.gameObject);
+            Destroy(gameObject);
+        }
         else
         {
             Destroy(gameObject);

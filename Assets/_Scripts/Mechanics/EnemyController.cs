@@ -6,9 +6,7 @@ public class EnemyController : MonoBehaviour
 {
     [SerializeField] Material ogMaterial; // Original material
     [SerializeField] Material transMaterial; // Transparent Material
-    [SerializeField] Camera viewCamera; // Reference to the camera
     [SerializeField] private Transform player; // Reference to the player
-    [SerializeField] private Transform raycastOrigin; // Reference to the game object for raycasting
     [SerializeField] private float moveSpeed = 2f; // Speed at which the enemy moves towards the player
     [SerializeField] private float stoppingDistance = 2f; // Distance at which the enemy stops moving towards the player
     public float shootSpeed = 5.0f;
@@ -23,46 +21,16 @@ public class EnemyController : MonoBehaviour
         anim = GetComponent<Animator>();
         enemyRenderer.material = ogMaterial;
 
+        PlayerController playerInstance = GameManager.Instance.PlayerInstance;
+        player = playerInstance.transform;
+
         InvokeRepeating("Shoot", 2, shootSpeed);
     }
 
     void Update()
     {
-        // Check if player is looking at the enemy
-        isPlayerFacing = IsPlayerLookingAtEnemy();
-
-        // Control shooting and movement based on whether the player is facing the enemy
-        if (isPlayerFacing)
-        {
-            CancelInvoke("Shoot");
-            enemyRenderer.material = ogMaterial;
-        }
-        else
-        {
-            if (!IsInvoking("Shoot"))
-            {
-                InvokeRepeating("Shoot", 2, shootSpeed);
-            }
-            enemyRenderer.material = transMaterial;
-            MoveTowardsPlayer();
-        }
-    }
-
-    private bool IsPlayerLookingAtEnemy()
-    {
-        Ray ray = new Ray(raycastOrigin.position, raycastOrigin.forward);
-        RaycastHit hit;
-
-        if (Physics.Raycast(ray, out hit))
-        {
-            if (hit.transform == transform)
-            {
-                Debug.Log("Player is looking at enemy");
-                return true;
-            }
-        }
-        Debug.Log("Player is not looking at enemy");
-        return false;
+        MoveTowardsPlayer();
+        
     }
 
     private void MoveTowardsPlayer()

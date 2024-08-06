@@ -2,52 +2,56 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.XR;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private int speed;
-    [SerializeField] private Camera playerCamera; // Reference to the camera
-    CharacterController cc;
+    public float speed = 7;
+    public float rotationSpeed = 0.15f;
+    private Vector2 move;
 
-    public float gravity;
+    Animator anim;
 
-    // Start is called before the first frame update
-    void Start()
+    public void OnMove(InputAction.CallbackContext context)
     {
-        cc = GetComponent<CharacterController>();
-        gravity = Physics.gravity.y;
+        move = context.ReadValue<Vector2>();
     }
 
-    // Update is called once per frame
+    void Start()
+    {
+        anim = GetComponent<Animator>();
+    }
     void Update()
     {
-        float hInput = Input.GetAxis("Horizontal");
-        float vInput = Input.GetAxis("Vertical");
+        movePlayer();
+        UpdateAnimator();
 
-        // Get the camera's forward and right directions
-        Vector3 cameraForward = playerCamera.transform.forward;
-        Vector3 cameraRight = playerCamera.transform.right;
-
-        // Make sure the directions are on the same plane as the player
-        cameraForward.y = 0;
-        cameraRight.y = 0;
-        cameraForward.Normalize();
-        cameraRight.Normalize();
-
-        // Calculate the move direction relative to the camera
-        Vector3 moveDirection = (cameraForward * vInput + cameraRight * hInput).normalized;
-        moveDirection *= speed;
-
-        if (moveDirection != Vector3.zero)
+        if (Input.GetKeyUp(KeyCode.LeftControl))
         {
-            float targetAngle = Mathf.Atan2(moveDirection.x, moveDirection.z) * Mathf.Rad2Deg;
-            Quaternion targetRotation = Quaternion.Euler(0, targetAngle, 0);
-            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 10f);
+
         }
 
-        moveDirection.y = gravity;
-        moveDirection *= Time.deltaTime;
+    }
 
-        cc.Move(moveDirection);
+    public void movePlayer()
+    {
+        
+        Vector3 movement = new Vector3(move.x, 0f, move.y);
+        if (movement.magnitude > 0.1f)
+        {
+            // Rotate player towards movement direction
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(movement), rotationSpeed);
+
+            // Move player
+            transform.Translate(movement * speed * Time.deltaTime, Space.World);
+        }
+    }
+
+    private void UpdateAnimator()
+    {
+        // Calculate and set the speed parameter in the Animator
+        float currentSpeed = new Vector3(move.x, 0f, move.y).magnitude * speed;
+        anim.SetFloat("speed", currentSpeed);
     }
 }

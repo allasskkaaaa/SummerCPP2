@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.Audio;
 using System;
+using UnityEngine.SceneManagement;
 
 public class CanvasManager : MonoBehaviour
 {
@@ -25,6 +26,7 @@ public class CanvasManager : MonoBehaviour
 
     [Header("Text")]
     public TMP_Text livesText;
+    public TMP_Text scoreText;
     public TMP_Text masterVolSliderText;
     public TMP_Text musicVolSliderText;
     public TMP_Text sfxVolSliderText;
@@ -49,11 +51,12 @@ public class CanvasManager : MonoBehaviour
         if (resumeButton)
             resumeButton.onClick.AddListener(() => SetMenus(null, pauseMenu));
 
-        /*if (returnToMenu)
-            returnToMenu.onClick.AddListener(() => GameManager.Instance.LoadScene("Title"));
+        if (returnToMenu)
+            returnToMenu.onClick.AddListener(() => GameManager.Instance.returnToMenu());
 
         if (playButton)
-            playButton.onClick.AddListener(() => GameManager.Instance.LoadScene("Game"));*/
+            playButton.onClick.AddListener(() => GameManager.Instance.startGame());
+
 
         if (settingsButton)
             settingsButton.onClick.AddListener(() => SetMenus(settingsMenu, mainMenu));
@@ -74,11 +77,17 @@ public class CanvasManager : MonoBehaviour
             SetupSliderInfo(sfxVolSlider, sfxVolSliderText, "SFXVol");
         }
 
-        /*if (livesText)
+        if (livesText)
         {
             GameManager.Instance.OnLifeValueChange += OnLifeValueChanged;
             livesText.text = $"Lives: {GameManager.Instance.lives}";
-        }*/
+        }
+
+        if (scoreText)
+        {
+            GameManager.Instance.OnScoreValueChange += OnScoreValueChanged;
+            scoreText.text = $"Score: {GameManager.Instance.score}";
+        }
 
     }
 
@@ -109,6 +118,12 @@ public class CanvasManager : MonoBehaviour
             livesText.text = $"Lives: {value}";
     }
 
+    public void OnScoreValueChanged(int value)
+    {
+        if (scoreText)
+            scoreText.text = $"Score: {value}";
+    }
+
     void SetMenus(GameObject menuToActivate, GameObject menuToDeactivate)
     {
         if (menuToActivate)
@@ -127,5 +142,28 @@ public class CanvasManager : MonoBehaviour
 #endif
     }
 
+    // Update is called once per frame
+    void Update()
+    {
+        if (!pauseMenu) return;
+
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            pauseMenu.SetActive(!pauseMenu.activeSelf);
+
+            //hints for the lab
+            if (pauseMenu.activeSelf)
+            {
+                pauseMenu.SetActive(true);
+                Time.timeScale = 0f;
+                Debug.Log("Pause");
+            }
+            else
+            {
+                pauseMenu.SetActive(false);
+                Time.timeScale = 1f;
+            }
+        }
+    }
 }
 

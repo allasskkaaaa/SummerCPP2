@@ -7,6 +7,8 @@ TagManager:
   - End
   - Spawnpoint
   - Enemy
+  - Health
+  - Score
   layers:
   - Default
   - TransparentFX

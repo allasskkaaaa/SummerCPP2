@@ -8,6 +8,6 @@ public class Damage : MonoBehaviour
 
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
-        GameManager.Instance.lives -= damage;
+        GameManager.Instance.health -= damage;
     }
 }

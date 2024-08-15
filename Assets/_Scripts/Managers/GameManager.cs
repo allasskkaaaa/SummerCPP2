@@ -23,26 +23,26 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private int _lives;
-    public int lives
+    private int _health;
+    public int health
     {
-        get => _lives;
+        get => _health;
         set
         {
             if (value <= 0) GameOver();
-            if (value < _lives) Respawn();
-            if (value > maxLives) value = maxLives;
-            _lives = value;
+            if (value < _health) Respawn();
+            if (value > maxHealth) value = maxHealth;
+            _health = value;
 
-            OnLifeValueChange?.Invoke(_lives);
+            OnLifeValueChange?.Invoke(_health);
 
-            Debug.Log($"Lives have been set to {_lives}");
+            Debug.Log($"Health have been set to {_health}");
             //broadcast can happen here
         }
     }
 
 
-    [SerializeField] private int maxLives = 100;
+    [SerializeField] private int maxHealth = 100;
     [SerializeField] private PlayerController playerPrefab;
 
     [HideInInspector] public PlayerController PlayerInstance => _playerinstance;
@@ -66,7 +66,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
 
-        lives = maxLives;
+        health = maxHealth;
     }
 
     public void LoadScene(string SceneName)
@@ -96,12 +96,9 @@ public class GameManager : MonoBehaviour
     {
         currentCheckpoint = updatedCheckpoint;
     }
-
     public void returnToMenu()
     {
         SceneManager.LoadScene(0);
-        Time.timeScale = 1.0f;
-
     }
 
     public void quitGame()
@@ -126,3 +123,4 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(3);
     }
 }
+

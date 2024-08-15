@@ -27,11 +27,6 @@ public class PlayerController : MonoBehaviour
         movePlayer();
         UpdateAnimator();
 
-        if (Input.GetKeyUp(KeyCode.LeftControl))
-        {
-
-        }
-
     }
 
     public void movePlayer()

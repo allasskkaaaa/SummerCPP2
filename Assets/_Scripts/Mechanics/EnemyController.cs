@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
-    [SerializeField] Material ogMaterial; // Original material
-    [SerializeField] Material transMaterial; // Transparent Material
+
     [SerializeField] private Transform player; // Reference to the player
     [SerializeField] private float moveSpeed = 2f; // Speed at which the enemy moves towards the player
     [SerializeField] private float stoppingDistance = 2f; // Distance at which the enemy stops moving towards the player
@@ -19,17 +18,19 @@ public class EnemyController : MonoBehaviour
     {
         enemyRenderer = GetComponent<Renderer>();
         anim = GetComponent<Animator>();
-        enemyRenderer.material = ogMaterial;
 
-        PlayerController playerInstance = GameManager.Instance.PlayerInstance;
-        player = playerInstance.transform;
+        if (player == null )
+        {
+            PlayerController playerInstance = GameManager.Instance.PlayerInstance;
+            player = playerInstance.transform;
+        }
+        
 
         InvokeRepeating("Shoot", 2, shootSpeed);
     }
 
     void Update()
     {
-        MoveTowardsPlayer();
         
     }
 

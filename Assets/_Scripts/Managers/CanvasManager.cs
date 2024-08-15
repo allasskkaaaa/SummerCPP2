@@ -80,7 +80,7 @@ public class CanvasManager : MonoBehaviour
         if (livesText)
         {
             GameManager.Instance.OnLifeValueChange += OnLifeValueChanged;
-            livesText.text = $"Lives: {GameManager.Instance.lives}";
+            livesText.text = $"Health: {GameManager.Instance.health}";
         }
 
         if (scoreText)
@@ -156,7 +156,6 @@ public class CanvasManager : MonoBehaviour
             {
                 pauseMenu.SetActive(true);
                 Time.timeScale = 0f;
-                Debug.Log("Pause");
             }
             else
             {

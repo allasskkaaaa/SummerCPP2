@@ -115,7 +115,7 @@ public class CanvasManager : MonoBehaviour
     void OnLifeValueChanged(int value)
     {
         if (livesText)
-            livesText.text = $"Lives: {value}";
+            livesText.text = $"Health: {value}";
     }
 
     public void OnScoreValueChanged(int value)

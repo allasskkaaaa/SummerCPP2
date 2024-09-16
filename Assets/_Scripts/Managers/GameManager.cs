@@ -29,8 +29,8 @@ public class GameManager : MonoBehaviour
         get => _health;
         set
         {
-            if (value <= 0) GameOver();
-            if (value < _health) Respawn();
+            //if (value <= 0) GameOver();
+            if (value <= 0) Respawn();
             if (value > maxHealth) value = maxHealth;
             _health = value;
 

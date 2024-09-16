@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     private Vector2 move;
 
     Animator anim;
+    CharacterController characterController;
 
     public void OnMove(InputAction.CallbackContext context)
     {
@@ -21,25 +22,26 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         anim = GetComponent<Animator>();
+        characterController = GetComponent<CharacterController>();
     }
-    void Update()
+
+    void FixedUpdate()
     {
         movePlayer();
         UpdateAnimator();
-
     }
 
     public void movePlayer()
     {
-        
         Vector3 movement = new Vector3(move.x, 0f, move.y);
+        
         if (movement.magnitude > 0.1f)
         {
             // Rotate player towards movement direction
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(movement), rotationSpeed);
 
-            // Move player
-            transform.Translate(movement * speed * Time.deltaTime, Space.World);
+            // Move player using CharacterController.Move()
+            characterController.Move(movement * speed * Time.deltaTime);
         }
     }
 

@@ -17,11 +17,6 @@ public class CameraFollow : MonoBehaviour
             Target = playerInstance.transform;
         }
 
-        if (Target == null)
-        {
-            GameObject.FindWithTag("Player");
-        }
-
     }
 
     // Update is called once per frame

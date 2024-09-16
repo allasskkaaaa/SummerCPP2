@@ -4,7 +4,22 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
+    //Enemy Variables
+    [SerializeField] private float detectionRadius = 10;
+    [SerializeField] private int shootSpeed = 3;
 
+    //Reference Variables
+    [SerializeField] private Transform player;
+
+
+    public void shoot()
+    {
+
+    }
+}
+
+
+/*
     [SerializeField] private Transform player; // Reference to the player
     [SerializeField] private float moveSpeed = 2f; // Speed at which the enemy moves towards the player
     [SerializeField] private float stoppingDistance = 2f; // Distance at which the enemy stops moving towards the player
@@ -61,5 +76,4 @@ public class EnemyController : MonoBehaviour
     public void Shoot()
     {
         anim.SetTrigger("Attack");
-    }
-}
+    }*/

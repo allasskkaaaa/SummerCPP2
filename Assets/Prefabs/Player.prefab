@@ -210,6 +210,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 7
   rotationSpeed: 0.4
+  canShoot: 0
+  canMelee: 0
+  primarySlot: {fileID: 4967039944221010181}
+  secondarySlot: {fileID: 315180070325276877}
+  primarySlotFilled: 0
+  secondarySlotFilled: 0
 --- !u!114 &6741033624109780634
 MonoBehaviour:
   m_ObjectHideFlags: 0

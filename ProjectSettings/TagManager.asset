@@ -10,6 +10,10 @@ TagManager:
   - Health
   - Score
   - Level
+  - Weapon
+  - Gun
+  - Axe
+  - NPCSpawn
   layers:
   - Default
   - TransparentFX

@@ -10,6 +10,13 @@ public class PlayerController : MonoBehaviour
     public float speed = 7;
     public float rotationSpeed = 0.15f;
     private Vector2 move;
+    public bool canShoot = false;
+    public bool canMelee = false;
+    public Transform primarySlot;
+    public Transform secondarySlot;
+
+    public bool primarySlotFilled = false;
+    public bool secondarySlotFilled = false;
 
     Animator anim;
     CharacterController characterController;
@@ -23,12 +30,33 @@ public class PlayerController : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         characterController = GetComponent<CharacterController>();
+
+    }
+
+    private void Update()
+    {
+        if (canShoot)
+        {
+            anim.SetBool("canShoot", true);
+        } else
+        {
+            anim.SetBool("canShoot", false);
+        }
+
+        if (canMelee)
+        {
+            anim.SetBool("canMelee", true);
+        } else
+        {
+            anim.SetBool("canMelee", false);
+        }
     }
 
     void FixedUpdate()
     {
         movePlayer();
         UpdateAnimator();
+        
     }
 
     public void movePlayer()
@@ -51,4 +79,5 @@ public class PlayerController : MonoBehaviour
         float currentSpeed = new Vector3(move.x, 0f, move.y).magnitude * speed;
         anim.SetFloat("speed", currentSpeed);
     }
+
 }

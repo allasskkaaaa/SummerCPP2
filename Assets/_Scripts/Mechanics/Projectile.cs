@@ -8,7 +8,9 @@ public class Projectile : MonoBehaviour
     public float lifetime = 5.0f;
     public int scoreAmount;
     Rigidbody rb;
-    
+
+    private GameObject NPC;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -54,6 +56,11 @@ public class Projectile : MonoBehaviour
 
             case "Level":
                 Destroy(gameObject);
+                break;
+
+            case "NPCSpawn":
+                Destroy(gameObject);
+                Instantiate(NPC, collision.transform);
                 break;
 
             default:

@@ -6,6 +6,7 @@ public class Shoot : MonoBehaviour
 {
     public Transform shootSpawn;
     public GameObject projectile;
+    public GameObject shooter;
 
     PlayerController pc;
     Animator anim;
@@ -14,17 +15,23 @@ public class Shoot : MonoBehaviour
     {
         pc = GetComponent<PlayerController>();
         anim = GetComponent<Animator>();
+
+        if (shooter == null)
+        {
+            Debug.Log("Shooter has not been specified");
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.LeftControl))
-        {
-            if (pc.canShoot)
-            anim.SetTrigger("shoot");          
-        }
-        
+        if (shooter.CompareTag("Player"))
+            if (Input.GetKeyDown(KeyCode.LeftControl))
+            {
+                if (pc.canShoot)
+                    anim.SetTrigger("shoot");
+            }
+
     }
 
     public void SpawnProjectile()

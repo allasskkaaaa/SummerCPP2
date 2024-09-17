@@ -64,6 +64,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7635826562936255635, guid: eb542e157f1dfd04ba46fe51448c1662, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 84cebd3a638eaab438bbb599984b76f7, type: 2}
     - target: {fileID: 919132149155446097, guid: eb542e157f1dfd04ba46fe51448c1662, type: 3}
       propertyPath: m_Name
       value: Pistol
@@ -75,27 +79,5 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: eb542e157f1dfd04ba46fe51448c1662, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 7678532837613446476}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eb542e157f1dfd04ba46fe51448c1662, type: 3}
---- !u!1 &7375696825277333005 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: eb542e157f1dfd04ba46fe51448c1662, type: 3}
-  m_PrefabInstance: {fileID: 7681686305539654492}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &7678532837613446476
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7375696825277333005}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9470aef65311d5f4b97d58026afcabc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ShootSpawn: {fileID: 0}
-  projectile: {fileID: 4601070124481090642, guid: aeb94d6ef6052ed4591a08f7b9d558c5, type: 3}

@@ -5,75 +5,43 @@ using UnityEngine;
 public class EnemyController : MonoBehaviour
 {
     //Enemy Variables
-    [SerializeField] private float detectionRadius = 10;
-    [SerializeField] private int shootSpeed = 3;
+    //[SerializeField] private float detectionRadius = 10;
+    [SerializeField] private int attackSpeed = 3;
 
-    //Reference Variables
-    [SerializeField] private Transform player;
+    Animator anim;
 
-
-    public void shoot()
+    private void Start()
     {
+        anim = GetComponent<Animator>();
+    }
 
+    private void OnTriggerStay(Collider other)
+    {
+        if  (other.CompareTag("Player") || other.CompareTag("NPC"))
+            anim.SetBool("attack",true);
+
+        Vector3 direction = other.transform.position - transform.position;
+        direction.y = 0;  // Ignore vertical rotation
+
+        // Create a rotation that looks in the direction of the target
+        Quaternion targetRotation = Quaternion.LookRotation(direction);
+
+        // Apply the rotation
+        transform.rotation = targetRotation;
+        //transform.LookAt(other.transform.position);
+
+        Debug.Log(other.name + "has entered attacking radius.");
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        anim.SetBool("attack", false);
+        Debug.Log(other.name + "has left attacking radius.");
+    }
+
+    void attack()
+    {
+        //Face victim and attacks
+        anim.SetBool("attack", true);
     }
 }
-
-
-/*
-    [SerializeField] private Transform player; // Reference to the player
-    [SerializeField] private float moveSpeed = 2f; // Speed at which the enemy moves towards the player
-    [SerializeField] private float stoppingDistance = 2f; // Distance at which the enemy stops moving towards the player
-    public float shootSpeed = 5.0f;
-
-    private Renderer enemyRenderer;
-    private Animator anim;
-    private bool isPlayerFacing;
-
-    void Start()
-    {
-        enemyRenderer = GetComponent<Renderer>();
-        anim = GetComponent<Animator>();
-
-        if (player == null )
-        {
-            PlayerController playerInstance = GameManager.Instance.PlayerInstance;
-            player = playerInstance.transform;
-        }
-        
-
-        InvokeRepeating("Shoot", 2, shootSpeed);
-    }
-
-    void Update()
-    {
-        
-    }
-
-    private void MoveTowardsPlayer()
-    {
-
-            // Calculate direction to player
-            Vector3 directionToPlayer = player.position - transform.position;
-            directionToPlayer.y = 0;
-
-            // Move towards the player if the distance is greater than stoppingDistance
-            if (directionToPlayer.magnitude > stoppingDistance)
-            {
-                Vector3 moveDirection = directionToPlayer.normalized * moveSpeed * Time.deltaTime;
-                transform.position += moveDirection;
-            }
-
-            // Face the player
-            if (directionToPlayer != Vector3.zero)
-            {
-                Quaternion targetRotation = Quaternion.LookRotation(directionToPlayer);
-                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 5f);
-            }
-
-        
-    }
-
-    public void Shoot()
-    {
-        anim.SetTrigger("Attack");
-    }*/

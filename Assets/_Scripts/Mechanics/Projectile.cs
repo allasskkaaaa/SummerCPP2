@@ -30,42 +30,5 @@ public class Projectile : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        switch (collision.gameObject.tag)
-        {
-            case "Enemy":
-            case "Player":
-                Destroy(collision.gameObject);
-                Destroy(gameObject);
-                break;
-
-            case "Health":
-                Debug.Log("Health increased");
-                GameManager.Instance.health += 10;
-                Destroy(collision.gameObject);
-                Destroy(gameObject);
-                break;
-
-            case "Score":
-                Debug.Log("Score increased");
-                GameManager.Instance.score += 40;
-                Destroy(collision.gameObject);
-                Destroy(gameObject);
-                break;
-
-            case "Level":
-                Destroy(gameObject);
-                break;
-
-            case "NPCSpawn":
-                Destroy(gameObject);
-                Instantiate(NPC, collision.transform);
-                break;
-
-            default:
-                Destroy(collision.gameObject);
-                break;
-        }
-    }
+    
 }

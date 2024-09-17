@@ -6,31 +6,52 @@ public class Damage : MonoBehaviour
 {
     public int damage = 1;         // Amount of damage to apply
     public float damageInterval = 1f; // Time in seconds between each damage tick
+    public List<GameObject> targets = new List<GameObject>(); // List of potential targets
 
     private Coroutine damageCoroutine;
 
-    private void OnTriggerEnter(Collider hit)
+    private void OnTriggerStay(Collider hit)
     {
-        if (hit.CompareTag("Player")) // Ensure the player is the one triggering the damage
+        if (targets.Contains(hit.gameObject)) // Check if the hit object is in the target list
         {
-            damageCoroutine = StartCoroutine(DealDamageOverTime(hit));
+            Debug.Log("Target detected");
+            // Start coroutine if it's not already running
+            if (damageCoroutine == null)
+            {
+                damageCoroutine = StartCoroutine(DealDamageOverTime());
+            }
         }
     }
 
     private void OnTriggerExit(Collider hit)
     {
-        if (hit.CompareTag("Player") && damageCoroutine != null)
+        if (targets.Contains(hit.gameObject)) // Check if the hit object is in the target list
         {
-            StopCoroutine(damageCoroutine);
-            damageCoroutine = null;
+            // Stop coroutine if it’s running
+            if (damageCoroutine != null)
+            {
+                StopCoroutine(damageCoroutine);
+                damageCoroutine = null;
+            }
         }
     }
 
-    private IEnumerator DealDamageOverTime(Collider player)
+    private IEnumerator DealDamageOverTime()
     {
+        // While the coroutine is running, apply damage to each target in the list
         while (true)
         {
-            GameManager.Instance.health -= damage;
+            foreach (GameObject target in targets)
+            {
+                if (target.CompareTag("Player"))
+                {
+                    GameManager.Instance.health -= damage; // Adjust this line if health is managed differently
+                } else
+                {
+                    Destroy(target);
+                }
+            }
+
             yield return new WaitForSeconds(damageInterval);
         }
     }

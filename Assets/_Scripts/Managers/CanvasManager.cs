@@ -36,6 +36,9 @@ public class CanvasManager : MonoBehaviour
     public Slider musicVolSlider;
     public Slider sfxVolSlider;
 
+    [Header("Progress Bars")]
+    public Image healthBar;
+
 
     // Start is called before the first frame update
     void Start()
@@ -81,6 +84,7 @@ public class CanvasManager : MonoBehaviour
         {
             GameManager.Instance.OnLifeValueChange += OnLifeValueChanged;
             livesText.text = $"Health: {GameManager.Instance.health}";
+            
         }
 
         if (scoreText)
@@ -116,6 +120,8 @@ public class CanvasManager : MonoBehaviour
     {
         if (livesText)
             livesText.text = $"Health: {value}";
+        float healthPercentage = Mathf.Clamp01(value / 100f); // Assuming health ranges from 0 to 100
+        healthBar.fillAmount = healthPercentage;
     }
 
     public void OnScoreValueChanged(int value)

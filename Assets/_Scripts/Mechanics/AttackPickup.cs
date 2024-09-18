@@ -30,6 +30,14 @@ public class AttackPickup : MonoBehaviour
                 Destroy(gameObject);
                 break;
 
+            case "NPC":
+                Debug.Log("NPC killed.");
+                GameManager.Instance.score -= 40;
+                Destroy(collision.gameObject);
+                Destroy(gameObject);
+                break;
+
+
             case "Level":
                 Destroy(gameObject);
                 break;

@@ -41,7 +41,6 @@ public class EnemyController : MonoBehaviour
 
     void attack()
     {
-        //Face victim and attacks
         anim.SetBool("attack", true);
     }
 }

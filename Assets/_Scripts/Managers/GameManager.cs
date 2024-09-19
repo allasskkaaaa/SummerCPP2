@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    private int _health;
+    /*private int _health;
     public int health
     {
         get => _health;
@@ -39,10 +39,10 @@ public class GameManager : MonoBehaviour
             Debug.Log($"Health have been set to {_health}");
             //broadcast can happen here
         }
-    }
+    }*/
 
 
-    [SerializeField] private int maxHealth = 100;
+    //[SerializeField] private int maxHealth = 100;
     [SerializeField] private PlayerController playerPrefab;
 
     [HideInInspector] public PlayerController PlayerInstance => _playerinstance;
@@ -66,7 +66,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
 
-        health = maxHealth;
+        //health = maxHealth;
     }
 
     public void LoadScene(string SceneName)

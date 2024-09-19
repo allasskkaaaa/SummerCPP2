@@ -21,12 +21,35 @@ public class HealthManager : MonoBehaviour
     public void TakeDamage(int damage)
     {
         health -= damage;
-        float healthPercentage = Mathf.Clamp01(health / maxHealth);
+        Debug.Log(damage + "has been taken.");
+        float healthPercentage = Mathf.Clamp01((float)health / maxHealth); 
         healthBar.fillAmount = healthPercentage;
         if (health <= 0)
         {
-            
-            Destroy(gameObject);
+            DeathAnimation();
         }
+    }
+
+    public void AddHealth(int hp)
+    {
+        health += hp;
+        Debug.Log(hp + "has been added.");
+        if (health > maxHealth)
+        {
+            health = maxHealth;
+        }
+
+        float healthPercentage = Mathf.Clamp01((float)health / maxHealth);  // Cast to float
+        healthBar.fillAmount = healthPercentage;
+    }
+
+    public void DeathAnimation()
+    {
+        anim.SetTrigger("death");
+    }
+
+    public void deleteObject()
+    {
+        Destroy(gameObject);
     }
 }

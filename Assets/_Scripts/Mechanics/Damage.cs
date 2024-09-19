@@ -4,55 +4,25 @@ using UnityEngine;
 
 public class Damage : MonoBehaviour
 {
-    public int damage = 1;         // Amount of damage to apply
-    public float damageInterval = 1f; // Time in seconds between each damage tick
-    public List<GameObject> targets = new List<GameObject>(); // List of potential targets
+    public int damage = 5; 
+    
 
-    private Coroutine damageCoroutine;
-
-    private void OnTriggerStay(Collider hit)
+    private void OnTriggerEnter(Collider hit)
     {
-        if (targets.Contains(hit.gameObject)) // Check if the hit object is in the target list
+        if (hit.CompareTag("NPC") || hit.CompareTag("Player") || hit.CompareTag("Enemy"))
         {
-            Debug.Log("Target detected");
-            // Start coroutine if it's not already running
-            if (damageCoroutine == null)
+            GameObject target = hit.gameObject;
+
+            HealthManager healthManager = target.GetComponent<HealthManager>();
+
+            if (healthManager == null)
             {
-                damageCoroutine = StartCoroutine(DealDamageOverTime());
+                Debug.Log("Object doesn't have a health manager.");
+            } else
+            {
+                healthManager.TakeDamage(damage);
             }
         }
-    }
-
-    private void OnTriggerExit(Collider hit)
-    {
-        if (targets.Contains(hit.gameObject)) // Check if the hit object is in the target list
-        {
-            // Stop coroutine if it’s running
-            if (damageCoroutine != null)
-            {
-                StopCoroutine(damageCoroutine);
-                damageCoroutine = null;
-            }
-        }
-    }
-
-    private IEnumerator DealDamageOverTime()
-    {
-        // While the coroutine is running, apply damage to each target in the list
-        while (true)
-        {
-            foreach (GameObject target in targets)
-            {
-                if (target.CompareTag("Player"))
-                {
-                    GameManager.Instance.health -= damage; // Adjust this line if health is managed differently
-                } else
-                {
-                    Destroy(target);
-                }
-            }
-
-            yield return new WaitForSeconds(damageInterval);
-        }
+        
     }
 }

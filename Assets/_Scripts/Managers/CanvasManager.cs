@@ -82,8 +82,8 @@ public class CanvasManager : MonoBehaviour
 
         if (livesText)
         {
-            GameManager.Instance.OnLifeValueChange += OnLifeValueChanged;
-            livesText.text = $"Health: {GameManager.Instance.health}";
+            //GameManager.Instance.OnLifeValueChange += OnLifeValueChanged;
+            //livesText.text = $"Health: {GameManager.Instance.health}";
             
         }
 

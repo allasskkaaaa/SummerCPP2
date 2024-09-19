@@ -12,8 +12,6 @@ public class PlayerController : MonoBehaviour
     private Vector2 move;
     public bool canShoot = false;
     public bool canMelee = false;
-    public Transform primarySlot;
-    public Transform secondarySlot;
 
     public bool primarySlotFilled = false;
     public bool secondarySlotFilled = false;

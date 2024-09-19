@@ -18,7 +18,7 @@ public class AttackPickup : MonoBehaviour
 
             case "Health":
                 Debug.Log("Health increased");
-                GameManager.Instance.health += 10;
+                //GameManager.Instance.health += 10;
                 Destroy(collision.gameObject);
                 Destroy(gameObject);
                 break;

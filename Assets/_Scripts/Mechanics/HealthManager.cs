@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using static UnityEngine.Rendering.DebugUI;
@@ -7,7 +8,10 @@ public class HealthManager : MonoBehaviour
     [SerializeField] private Image healthBar;
     public int health = 100;
     public int maxHealth = 100;
+    public int lives = 1;
 
+    [SerializeField] private TMP_Text healthText;
+    
     Animator anim;
     private void Start()
     {
@@ -20,9 +24,21 @@ public class HealthManager : MonoBehaviour
         Debug.Log(damage + "has been taken.");
         float healthPercentage = Mathf.Clamp01((float)health / maxHealth); 
         healthBar.fillAmount = healthPercentage;
+        if (gameObject.CompareTag("Player"))
+        {
+            healthText.text = "Health: " + health;
+        }
         if (health <= 0)
         {
-            DeathAnimation();
+            lives--;
+            if (lives <= 0)
+            {
+                DeathAnimation();
+                
+            } else
+            {
+                respawn();
+            }
         }
     }
 
@@ -37,6 +53,10 @@ public class HealthManager : MonoBehaviour
 
         float healthPercentage = Mathf.Clamp01((float)health / maxHealth);  // Cast to float
         healthBar.fillAmount = healthPercentage;
+        if (gameObject.CompareTag("Player"))
+        {
+            healthText.text = "Health" + health;
+        }
     }
 
     public void DeathAnimation()
@@ -49,5 +69,8 @@ public class HealthManager : MonoBehaviour
         Destroy(gameObject);
     }
 
-   
+   public void respawn()
+    {
+        GameManager.Instance.Respawn();
+    }
 }

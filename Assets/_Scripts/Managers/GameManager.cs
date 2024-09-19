@@ -80,7 +80,7 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(2);
     }
 
-    private void Respawn()
+    public void Respawn()
     {
         _playerinstance.transform.position = currentCheckpoint.position;
         Debug.Log("Respawn");

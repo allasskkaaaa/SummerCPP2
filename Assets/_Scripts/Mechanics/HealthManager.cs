@@ -6,9 +6,11 @@ using static UnityEngine.Rendering.DebugUI;
 public class HealthManager : MonoBehaviour
 {
     [SerializeField] private Image healthBar;
-    public int health = 100;
-    public int maxHealth = 100;
-    public int lives = 1;
+    [SerializeField] private ParticleSystem bloodParticles;
+    [SerializeField] private int health = 100;
+    [SerializeField] private int maxHealth = 100;
+    [SerializeField] private int maxLives;
+    [SerializeField] private int lives = 1;
 
     [SerializeField] private TMP_Text healthText;
     
@@ -16,10 +18,28 @@ public class HealthManager : MonoBehaviour
     private void Start()
     {
         anim = GetComponent<Animator>();
+        bloodParticles.Clear();
 
         if (gameObject.CompareTag("Player"))
         {
+            if (healthText == null)
+                healthText = GameObject.FindWithTag("PlayerHealthText").GetComponent<TMP_Text>();
+
+            if (healthBar == null)
+                healthBar = GameObject.FindWithTag("PlayerHealthBar").GetComponent<Image>();
+        }
+    }
+
+
+    private void Update()
+    {
+        if (healthText == null)
+        {
             healthText = GameObject.FindWithTag("PlayerHealthText").GetComponent<TMP_Text>();
+        }
+
+        if (healthBar == null)
+        {
             healthBar = GameObject.FindWithTag("PlayerHealthBar").GetComponent<Image>();
         }
     }
@@ -27,9 +47,9 @@ public class HealthManager : MonoBehaviour
     public void TakeDamage(int damage)
     {
         health -= damage;
-        Debug.Log(damage + "has been taken.");
-        float healthPercentage = Mathf.Clamp01((float)health / maxHealth); 
-        healthBar.fillAmount = healthPercentage;
+        Debug.Log(damage + " damage has been taken.");
+        updateHealthBar();
+        bloodParticles.Play();
         if (gameObject.CompareTag("Player"))
         {
             healthText.text = "Health: " + health;
@@ -51,17 +71,16 @@ public class HealthManager : MonoBehaviour
     public void AddHealth(int hp)
     {
         health += hp;
-        Debug.Log(hp + "has been added.");
+        Debug.Log(hp + " health has been added.");
         if (health > maxHealth)
         {
             health = maxHealth;
         }
 
-        float healthPercentage = Mathf.Clamp01((float)health / maxHealth);  // Cast to float
-        healthBar.fillAmount = healthPercentage;
+        updateHealthBar();
         if (gameObject.CompareTag("Player"))
         {
-            healthText.text = "Health" + health;
+            healthText.text = "Health: " + health;
         }
     }
 
@@ -77,6 +96,24 @@ public class HealthManager : MonoBehaviour
 
    public void respawn()
     {
+        resetHealth();
         GameManager.Instance.Respawn();
+    }
+
+    public void resetHealth()
+    {
+        Debug.Log("Health has been reset");
+        health = maxHealth;
+    }
+
+    public void resetLives()
+    {
+        lives = maxLives;
+    }
+
+    public void updateHealthBar()
+    {
+        float healthPercentage = Mathf.Clamp01((float)health / maxHealth);  // Cast to float
+        healthBar.fillAmount = healthPercentage;
     }
 }

@@ -22,6 +22,11 @@ public class Damage : MonoBehaviour
             {
                 healthManager.TakeDamage(damage);
             }
+
+            /*if (gameObject.CompareTag("Bullet"))
+            { 
+                Destroy(gameObject); 
+            }*/
         }
         
     }

@@ -5,9 +5,11 @@ using UnityEngine;
 public class AttackPickup : MonoBehaviour
 {
     public GameObject NPC;
+    public GameObject shooter;
 
     private void OnCollisionEnter(Collision collision)
     {
+        
         switch (collision.gameObject.tag)
         {
             case "Enemy":
@@ -16,12 +18,19 @@ public class AttackPickup : MonoBehaviour
                 Destroy(gameObject);
                 break;
 
-            case "Health":
-                Debug.Log("Health increased");
-                //GameManager.Instance.health += 10;
-                Destroy(collision.gameObject);
-                Destroy(gameObject);
-                break;
+            /*case "Health":
+                if (shooter.CompareTag("Player"))
+                {
+                    HealthManager healthManager;
+                    healthManager = shooter.GetComponent<HealthManager>();
+                    Debug.Log("Health increased");
+                    healthManager.AddHealth(40);
+                    Destroy(collision.gameObject);
+                    Destroy(gameObject);
+                    
+                }
+                break;*/
+
 
             case "Score":
                 Debug.Log("Score increased");

@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class DamageOvertime : MonoBehaviour
 {
-    public int damage = 5;
-    public float dmgInterval = 1f;
+    [SerializeField] private int damage = 5;
+    [SerializeField] private float dmgInterval = 1f;
 
     private bool isDamaging = false;  // To prevent multiple coroutines from starting
 

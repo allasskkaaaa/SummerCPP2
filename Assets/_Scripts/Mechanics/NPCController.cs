@@ -9,6 +9,8 @@ public class NPCController : MonoBehaviour
     [SerializeField] private int speed = 7;
     [SerializeField] private float followSpeed = 4f;
     [SerializeField] private float stoppingDistance = 2f;
+    [SerializeField] private float catchUpSpeed = 8f; //Speed when NPC lags behind and needs to catchup to the player
+    [SerializeField] private float catchUpDistance = 12f; //Distance the NPC starts to catchup
     private bool isOccupied = false;
     private Vector3 lastPosition;
 
@@ -64,9 +66,17 @@ public class NPCController : MonoBehaviour
     {
         Vector3 direction = target.position - transform.position;
 
-        if (direction.magnitude > stoppingDistance)
+        if (direction.magnitude > stoppingDistance && direction.magnitude < catchUpDistance) //Check if NPC is within normal following distance
         {
             Vector3 moveDirection = direction.normalized * followSpeed * Time.deltaTime;
+
+            transform.position += moveDirection;
+
+            direction.y = 0;
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(direction), Time.deltaTime * followSpeed);
+        } else if (direction.magnitude > catchUpDistance) //If NPC is too far from player
+        {
+            Vector3 moveDirection = direction.normalized * catchUpSpeed * Time.deltaTime;
 
             transform.position += moveDirection;
 

@@ -21,7 +21,7 @@ public class NPCController : MonoBehaviour
     {
         if (player == null)
         {
-            player = GameObject.FindGameObjectWithTag("Player").transform;
+            player = GameManager.Instance.PlayerInstance.transform;
         }
 
         anim = GetComponent<Animator>();
@@ -29,6 +29,10 @@ public class NPCController : MonoBehaviour
 
     private void Update()
     {
+        if (player == null)
+        {
+            player = GameManager.Instance.PlayerInstance.transform;
+        }
 
         if (!isOccupied)
         {

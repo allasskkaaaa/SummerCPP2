@@ -16,6 +16,12 @@ public class HealthManager : MonoBehaviour
     private void Start()
     {
         anim = GetComponent<Animator>();
+
+        if (gameObject.CompareTag("Player"))
+        {
+            healthText = GameObject.FindWithTag("PlayerHealthText").GetComponent<TMP_Text>();
+            healthBar = GameObject.FindWithTag("PlayerHealthBar").GetComponent<Image>();
+        }
     }
 
     public void TakeDamage(int damage)

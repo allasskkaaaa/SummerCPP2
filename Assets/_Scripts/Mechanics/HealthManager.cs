@@ -13,10 +13,6 @@ public class HealthManager : MonoBehaviour
     {
         anim = GetComponent<Animator>();
     }
-    public bool IsDead()
-    {
-        return health <= 0;
-    }
 
     public void TakeDamage(int damage)
     {
@@ -52,4 +48,6 @@ public class HealthManager : MonoBehaviour
     {
         Destroy(gameObject);
     }
+
+   
 }

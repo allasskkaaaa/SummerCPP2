@@ -2097,7 +2097,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: d0710341b5b0c8843a457e4eb9e09941, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_WarningMessage: 
@@ -2141,6 +2141,8 @@ MonoBehaviour:
   detectionRadius: 10
   attackSpeed: 3
   speed: 7
+  followSpeed: 4
+  stoppingDistance: 2
   player: {fileID: 0}
 --- !u!136 &2239282924114148499
 CapsuleCollider:

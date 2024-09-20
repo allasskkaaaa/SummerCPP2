@@ -25,13 +25,13 @@ public class LevelUpdate : MonoBehaviour
         if (GameManager.Instance.level == level && !hasSpawned)
         {
             Debug.Log("Spawning objects for level " + level);
-            spawnManager.spawnObjects();
+            spawnManager.spawnEnemies();
             hasSpawned = true; // Mark as spawned to prevent repeated spawning
         }
         else if (GameManager.Instance.level != level && hasSpawned)
         {
             Debug.Log("Despawning objects for level " + level);
-            spawnManager.despawnObjects();
+            spawnManager.despawnEnemies();
             hasSpawned = false; // Reset so it can spawn again if the level is revisited
         }
     }

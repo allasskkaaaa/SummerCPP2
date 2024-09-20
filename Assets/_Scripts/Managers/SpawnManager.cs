@@ -4,10 +4,27 @@ using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
+    [SerializeField] private int levelToSpawn = 1;
     [SerializeField] private GameObject[] enemies;
     [SerializeField] private Transform[] spawnPoints;
-    private List<GameObject> spawnedEnemies = new List<GameObject>(); //Tracks objects spawned in the area
-    public void spawnObjects()
+    private List<GameObject> spawnedEnemies = new List<GameObject>(); // Tracks objects spawned in the area
+    private bool enemiesSpawned = false; // Ensure enemies are spawned only once per level
+
+    private void Update()
+    {
+        if (GameManager.Instance.level == levelToSpawn && !enemiesSpawned)
+        {
+            spawnEnemies();
+            enemiesSpawned = true; // Prevent multiple spawns
+        }
+        else if (GameManager.Instance.level != levelToSpawn && enemiesSpawned)
+        {
+            despawnEnemies();
+            enemiesSpawned = false; // Reset when the player leaves the level
+        }
+    }
+
+    public void spawnEnemies()
     {
         foreach (Transform spawnPoint in spawnPoints)
         {
@@ -30,6 +47,6 @@ public class SpawnManager : MonoBehaviour
                 Destroy(objectSpawned);
             }
         }
+        spawnedEnemies.Clear(); // Clear the list after despawning
     }
 }
-

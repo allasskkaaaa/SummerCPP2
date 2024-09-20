@@ -55,9 +55,8 @@ public class Checkpoint : MonoBehaviour
         {
             checkPointCaptured = true;
             GameManager.Instance.UpdateCheckpoint(checkPointPos);
-            spawnManager.spawnObjects();
             Instantiate(captureVFX, checkPointPos);
-
+            GameManager.Instance.level = level;
 
         } else
         {

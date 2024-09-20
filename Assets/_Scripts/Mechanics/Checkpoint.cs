@@ -8,14 +8,16 @@ public class Checkpoint : MonoBehaviour
 {
     public enum levelNumber
     {
-        one, two, three, four, five, six, seven
+        one, two, three, four, five, six, seven, eight
     }
 
     [SerializeField] private Transform checkPointPos;
     [SerializeField] private bool checkPointCaptured = false;
     [SerializeField] private ParticleSystem captureVFX;
     [SerializeField] private levelNumber levelTransition;
+    [SerializeField] SpawnManager spawnManager;
     private int level;
+    
     // Start is called before the first frame update
 
     private void Start()
@@ -42,6 +44,10 @@ public class Checkpoint : MonoBehaviour
         {
             level = 7;
         }
+        else if (levelTransition == levelNumber.eight)
+        {
+            level = 8;
+        }
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -49,7 +55,10 @@ public class Checkpoint : MonoBehaviour
         {
             checkPointCaptured = true;
             GameManager.Instance.UpdateCheckpoint(checkPointPos);
+            spawnManager.spawnObjects();
             Instantiate(captureVFX, checkPointPos);
+
+
         } else
         {
             return;

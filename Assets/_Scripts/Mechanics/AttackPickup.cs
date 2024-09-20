@@ -12,11 +12,11 @@ public class AttackPickup : MonoBehaviour
         
         switch (collision.gameObject.tag)
         {
-            case "Enemy":
+            /*case "Enemy":
             case "Player":
                 Destroy(collision.gameObject);
                 Destroy(gameObject);
-                break;
+                break;*/
 
             /*case "Health":
                 if (shooter.CompareTag("Player"))
@@ -38,7 +38,7 @@ public class AttackPickup : MonoBehaviour
                 Destroy(collision.gameObject);
                 Destroy(gameObject);
                 break;
-
+/*
             case "NPC":
                 Debug.Log("NPC killed.");
                 GameManager.Instance.score -= 40;
@@ -50,10 +50,10 @@ public class AttackPickup : MonoBehaviour
             case "Level":
                 Destroy(gameObject);
                 break;
-
-            default:
+*/
+            /*default:
                 Destroy(collision.gameObject);
-                break;
+                break;*/
         }
     }
 }

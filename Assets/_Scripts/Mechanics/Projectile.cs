@@ -6,10 +6,11 @@ public class Projectile : MonoBehaviour
 {
     public int moveSpeed = 7;
     public float lifetime = 5.0f;
-    public int scoreAmount;
+    public int bulletDamage = 20;
     Rigidbody rb;
 
-    private GameObject NPC;
+    private HealthManager healthManager;
+    public GameObject shooter;
 
     // Start is called before the first frame update
     void Start()
@@ -30,8 +31,18 @@ public class Projectile : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter(Collision other)
     {
+        if (other.gameObject == shooter)
+        {
+            return;
+        }
+
+        if (other.gameObject.CompareTag("NPC") || other.gameObject.CompareTag("Enemy") || other.gameObject.CompareTag("Player"))
+        {
+            healthManager = other.gameObject.GetComponent<HealthManager>();
+            healthManager.TakeDamage(bulletDamage);
+        }
         Destroy(gameObject);
     }
 

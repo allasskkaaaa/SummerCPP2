@@ -38,7 +38,9 @@ public class Shoot : MonoBehaviour
     {
         if (projectile && shootSpawn)
         {
-            Instantiate(projectile, shootSpawn.position, shootSpawn.rotation);
+            GameObject projectileInstance = Instantiate(projectile, shootSpawn.position, shootSpawn.rotation);
+            Projectile projectileScript = projectileInstance.GetComponent<Projectile>();
+            projectileScript.shooter = this.gameObject; // Assign the shooter
         }
     }
 }

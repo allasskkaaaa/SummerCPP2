@@ -4,42 +4,32 @@ using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
-    [SerializeField] public GameObject[] objectSpawned;
-    public Transform[] spawnPoints;
-    private int randomObjectIndex;
-    private int randomSpawnIndex;
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private GameObject[] gameObjects;
+    [SerializeField] private Transform[] spawnPoints;
+    private List<GameObject> spawnedObjects = new List<GameObject>(); //Tracks objects spawned in the area
+    public void spawnObjects()
     {
-        spawnObject();
+        foreach (Transform spawnPoint in spawnPoints)
+        {
+            // Randomly select an object from the array
+            int randomIndex = Random.Range(0, gameObjects.Length);
+            GameObject randomObject = gameObjects[randomIndex];
+
+            // Instantiate the randomly selected object at the spawn point
+            GameObject objectSpawned = Instantiate(randomObject, spawnPoint.position, spawnPoint.rotation);
+            spawnedObjects.Add(objectSpawned); // Track the spawned object
+        }
     }
 
-    void spawnObject()
+    public void despawnObjects()
     {
-        
-
-        if (objectSpawned.Length < 0)
+        foreach (GameObject objectSpawned in spawnedObjects)
         {
-            Debug.Log("No objects to spawn assigned");
-            return;
+            if (objectSpawned != null)
+            {
+                Destroy(objectSpawned);
+            }
         }
-
-        if (spawnPoints.Length < 0)
-        {
-            Debug.Log("No spawn points assigned");
-            return;
-        }
-        else
-        {
-            Debug.Log("Object Spawned");
-        }
-
-        for (int i = 0; i < spawnPoints.Length; i++)
-        {
-            randomObjectIndex = Random.Range(0, objectSpawned.Length);
-            randomSpawnIndex = Random.Range(0, spawnPoints.Length);
-            Instantiate(objectSpawned[randomObjectIndex], spawnPoints[randomSpawnIndex].position, spawnPoints[randomSpawnIndex].rotation);
-        }
-        
     }
 }
+

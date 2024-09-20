@@ -56,16 +56,26 @@ public class HealthManager : MonoBehaviour
         }
         if (health <= 0)
         {
-            lives--;
-            if (lives <= 0)
+            if (gameObject.CompareTag("Player"))
             {
-                DeathAnimation();
-                
+                lives--;
+                if (lives <= 0)
+                {
+                    DeathAnimation();
+
+                }
+                else
+                {
+                    respawn();
+                }
             } else
             {
-                respawn();
+                deleteObject();
             }
+            
         }
+
+
     }
 
     public void AddHealth(int hp)

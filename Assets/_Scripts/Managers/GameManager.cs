@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    public int level = 0;
     static GameManager _instance;
     //public Action<int> OnLifeValueChange;
     public Action<int> OnScoreValueChange;

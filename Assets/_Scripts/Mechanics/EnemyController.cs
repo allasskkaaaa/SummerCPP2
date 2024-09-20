@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
-    //Enemy Variables
-    //[SerializeField] private float detectionRadius = 10;
     [SerializeField] private int attackSpeed = 3;
-
+    [SerializeField] private float followSpeed = 4f;
+    [SerializeField] private float stoppingDistance = 2f;
     Animator anim;
 
     private void Start()
@@ -17,9 +16,10 @@ public class EnemyController : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if  (other.CompareTag("Player") || other.CompareTag("NPC"))
-            anim.SetBool("attack",true);
+        if (other.CompareTag("Player") || other.CompareTag("NPC"))
+            StartCoroutine(shoot(attackSpeed));
 
+        follow(other.transform);
         Vector3 direction = other.transform.position - transform.position;
         direction.y = 0;  // Ignore vertical rotation
 
@@ -42,5 +42,27 @@ public class EnemyController : MonoBehaviour
     void attack()
     {
         anim.SetBool("attack", true);
+    }
+
+    IEnumerator shoot(int seconds)
+    {
+        attack();
+        yield return new WaitForSeconds(seconds);
+        anim.SetBool("attack", false);
+    }
+
+    public void follow(Transform target)
+    {
+        Vector3 direction = target.position - transform.position;
+
+        if (direction.magnitude > stoppingDistance)
+        {
+            Vector3 moveDirection = direction.normalized * followSpeed * Time.deltaTime;
+
+            transform.position += moveDirection;
+
+            direction.y = 0;
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(direction), Time.deltaTime * followSpeed);
+        }
     }
 }

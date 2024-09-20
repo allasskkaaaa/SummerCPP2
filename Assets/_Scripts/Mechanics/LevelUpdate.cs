@@ -4,27 +4,35 @@ using UnityEngine;
 
 public class LevelUpdate : MonoBehaviour
 {
-    public int level = 0; //Indicates the level
-    public int setLevel; //Indicates the level the player passing through the gate moves onto
-    public List<Transform> enemySpawns; //the spawn points for the enemies
-    public List<GameObject> enemies; //The enemies that will spawn from enemySpawn transform
+    public int level = 0; // Indicates the level
 
-    public void OnCollisionEnter(Collision collision)
+    private SpawnManager spawnManager; // Reference to the SpawnManager
+    private bool hasSpawned = false;   // Track if objects have been spawned
+
+    private void Start()
     {
-        onLevelChange();
-    }
-
-
-    public void onLevelChange()
-    {
-        spawnEnemies();
-    }
-
-    private void spawnEnemies()
-    {
-        for (int i = 0; i < enemies.Count; i++)
+        // Assuming the SpawnManager is on the same GameObject or assign it manually in the Inspector
+        spawnManager = GetComponent<SpawnManager>();
+        if (spawnManager == null)
         {
-            Instantiate(enemies[i]); //Instantiates a random enemy from the enemy list
+            Debug.LogError("SpawnManager is not assigned to LevelUpdate.");
+        }
+    }
+
+    private void Update()
+    {
+        // Check if the level in GameManager matches this level
+        if (GameManager.Instance.level == level && !hasSpawned)
+        {
+            Debug.Log("Spawning objects for level " + level);
+            spawnManager.spawnObjects();
+            hasSpawned = true; // Mark as spawned to prevent repeated spawning
+        }
+        else if (GameManager.Instance.level != level && hasSpawned)
+        {
+            Debug.Log("Despawning objects for level " + level);
+            spawnManager.despawnObjects();
+            hasSpawned = false; // Reset so it can spawn again if the level is revisited
         }
     }
 }

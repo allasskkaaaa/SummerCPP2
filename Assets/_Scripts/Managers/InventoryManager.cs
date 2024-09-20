@@ -71,12 +71,14 @@ public class InventoryManager : MonoBehaviour
             {
                 primaryObject.transform.SetParent(primarySlot);
                 primaryObject.transform.position = primarySlot.position;
+                primaryObject.transform.rotation = primarySlot.rotation;
             }
 
             if (secondaryObject != null)
             {
                 secondaryObject.transform.SetParent(secondarySlot);
                 secondaryObject.transform.position = secondarySlot.position;
+                secondaryObject.transform.rotation = secondarySlot.rotation;
             }
 
             // Update slot filled status

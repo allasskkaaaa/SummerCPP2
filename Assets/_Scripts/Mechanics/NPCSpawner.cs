@@ -11,6 +11,7 @@ public class NPCSpawner : MonoBehaviour
         Vector3 spawnPosition = new Vector3(transform.position.x, 10, transform.position.z);
         Instantiate(npcType, spawnPosition, transform.rotation);
         Destroy(collision.gameObject);
+        Destroy(gameObject);
         
     }
 }

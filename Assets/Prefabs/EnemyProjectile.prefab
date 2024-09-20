@@ -149,7 +149,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 20
   lifetime: 3
-  scoreAmount: 0
+  bulletDamage: 20
+  shooter: {fileID: 0}
 --- !u!114 &4890421506070142212
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -163,3 +164,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 5
+  user: {fileID: 4361486057515876038, guid: e8f5d5ee596ed3e46aa004867ff189fe, type: 3}

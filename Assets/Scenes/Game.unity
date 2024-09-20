@@ -44194,6 +44194,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -1266310238012145316, guid: b690d479ccc69cd44a6992eaaaf540f4, type: 3}
+      propertyPath: m_Constraints
+      value: 64
+      objectReference: {fileID: 0}
     - target: {fileID: 2464001264846362415, guid: b690d479ccc69cd44a6992eaaaf540f4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.0065013357
@@ -44214,9 +44218,17 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: 0.003151163
       objectReference: {fileID: 0}
+    - target: {fileID: 6557203645053493418, guid: b690d479ccc69cd44a6992eaaaf540f4, type: 3}
+      propertyPath: m_Radius
+      value: 7.22
+      objectReference: {fileID: 0}
     - target: {fileID: 7289751613847760129, guid: b690d479ccc69cd44a6992eaaaf540f4, type: 3}
       propertyPath: m_Name
       value: EnemyAxe
+      objectReference: {fileID: 0}
+    - target: {fileID: 7896060402514521033, guid: b690d479ccc69cd44a6992eaaaf540f4, type: 3}
+      propertyPath: stoppingDistance
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7953839442027460539, guid: b690d479ccc69cd44a6992eaaaf540f4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -44322,6 +44334,10 @@ PrefabInstance:
       propertyPath: cam
       value: 
       objectReference: {fileID: 772158059}
+    - target: {fileID: 3906224463580406831, guid: e8f5d5ee596ed3e46aa004867ff189fe, type: 3}
+      propertyPath: m_Constraints
+      value: 64
+      objectReference: {fileID: 0}
     - target: {fileID: 4361486057515876038, guid: e8f5d5ee596ed3e46aa004867ff189fe, type: 3}
       propertyPath: m_Name
       value: EnemyGun

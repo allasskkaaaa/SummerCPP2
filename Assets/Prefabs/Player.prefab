@@ -24,13 +24,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 75108408232868862}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.73831123, y: 0.048916392, z: -0.19755024, w: 0.6430223}
-  m_LocalPosition: {x: -0.17, y: -0.56, z: -0.69}
+  m_LocalRotation: {x: -0.094180286, y: -0.08697372, z: 0.018463107, w: 0.9915769}
+  m_LocalPosition: {x: 0.149, y: -0.723, z: -0.662}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8426138839952004580}
-  m_LocalEulerAnglesHint: {x: -68.462, y: 104.996, z: -117.279}
+  m_LocalEulerAnglesHint: {x: -10.577, y: -10.312, z: 3.091}
 --- !u!1 &1355327738763113617
 GameObject:
   m_ObjectHideFlags: 0
@@ -86,13 +86,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6135546389767261087}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.37942594, y: 0.6893446, z: -0.4297809, w: -0.44286397}
-  m_LocalPosition: {x: -0.15, y: 0.22, z: 0.02}
+  m_LocalRotation: {x: -0.03793715, y: 0.011562296, z: -0.6678505, w: -0.74323803}
+  m_LocalPosition: {x: -0.116, y: 0.228, z: 0.069}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7516206562830039619}
-  m_LocalEulerAnglesHint: {x: -248.218, y: 50.041, z: 157.427}
+  m_LocalEulerAnglesHint: {x: -184.119, y: -178.076, z: -96.047}
 --- !u!1001 &3686290904472236117
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1200,5 +1200,6 @@ MonoBehaviour:
   bloodParticles: {fileID: 4173571757379631788}
   health: 100
   maxHealth: 100
+  maxLives: 0
   lives: 3
   healthText: {fileID: 0}

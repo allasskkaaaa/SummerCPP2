@@ -1234,6 +1234,7 @@ GameObject:
   - component: {fileID: 2239282924114148499}
   - component: {fileID: 6791929397968237729}
   - component: {fileID: 4617097810320500773}
+  - component: {fileID: -2157395710194246084}
   m_Layer: 0
   m_Name: NPC_Axe
   m_TagString: NPC
@@ -1322,6 +1323,7 @@ MonoBehaviour:
   catchUpSpeed: 9
   catchUpDistance: 8
   player: {fileID: 0}
+  target: {fileID: 0}
 --- !u!136 &2239282924114148499
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1378,6 +1380,33 @@ MonoBehaviour:
   maxLives: 0
   lives: 1
   healthText: {fileID: 0}
+--- !u!54 &-2157395710194246084
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8314127594421994087}
+  serializedVersion: 4
+  m_Mass: 999
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 64
+  m_CollisionDetection: 0
 --- !u!1 &8371273215024352594
 GameObject:
   m_ObjectHideFlags: 0
@@ -1679,6 +1708,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7355912992014008574}
     m_Modifications:
+    - target: {fileID: 469849181307228177, guid: 48a5d9f75edd77d45b7b9c3d31fc3c8b, type: 3}
+      propertyPath: user
+      value: 
+      objectReference: {fileID: 8314127594421994087}
     - target: {fileID: 2479465848097067357, guid: 48a5d9f75edd77d45b7b9c3d31fc3c8b, type: 3}
       propertyPath: m_Name
       value: AxePivot

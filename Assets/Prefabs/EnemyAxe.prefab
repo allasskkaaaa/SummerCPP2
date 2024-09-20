@@ -1184,6 +1184,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackSpeed: 3
+  followSpeed: 4
+  stoppingDistance: 2
 --- !u!1 &7289751613847760129
 GameObject:
   m_ObjectHideFlags: 0
@@ -1197,6 +1199,7 @@ GameObject:
   - component: {fileID: 6557203645053493418}
   - component: {fileID: 7896060402514521033}
   - component: {fileID: 6610750056817614608}
+  - component: {fileID: -1266310238012145316}
   m_Layer: 0
   m_Name: EnemyAxe
   m_TagString: Enemy
@@ -1263,7 +1266,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 3.75
+  m_Radius: 5.84
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &7896060402514521033
 MonoBehaviour:
@@ -1277,7 +1280,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3afcd8e92d5dfde469b6fe3733e0cfb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackSpeed: 3
+  attackSpeed: 5
+  followSpeed: 4
+  stoppingDistance: 3
 --- !u!136 &6610750056817614608
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1301,6 +1306,33 @@ CapsuleCollider:
   m_Height: 1.76
   m_Direction: 1
   m_Center: {x: 0, y: 0.88, z: 0}
+--- !u!54 &-1266310238012145316
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7289751613847760129}
+  serializedVersion: 4
+  m_Mass: 999
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &7416882356773457498
 GameObject:
   m_ObjectHideFlags: 0
@@ -1651,6 +1683,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3411037496562080530}
     m_Modifications:
+    - target: {fileID: 469849181307228177, guid: 48a5d9f75edd77d45b7b9c3d31fc3c8b, type: 3}
+      propertyPath: user
+      value: 
+      objectReference: {fileID: 7289751613847760129}
     - target: {fileID: 2479465848097067357, guid: 48a5d9f75edd77d45b7b9c3d31fc3c8b, type: 3}
       propertyPath: m_Name
       value: AxePivot

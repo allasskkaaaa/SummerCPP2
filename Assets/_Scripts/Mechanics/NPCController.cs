@@ -9,14 +9,14 @@ public class NPCController : MonoBehaviour
     [SerializeField] private int speed = 7;
     [SerializeField] private float followSpeed = 4f;
     [SerializeField] private float stoppingDistance = 2f;
-    [SerializeField] private float catchUpSpeed = 8f; //Speed when NPC lags behind and needs to catchup to the player
-    [SerializeField] private float catchUpDistance = 12f; //Distance the NPC starts to catchup
+    [SerializeField] private float catchUpSpeed = 8f;
+    [SerializeField] private float catchUpDistance = 12f;
     private bool isOccupied = false;
     private Vector3 lastPosition;
 
-
-    //Reference Variables
+    // Reference Variables
     [SerializeField] private Transform player;
+    [SerializeField] private Transform target;
     Animator anim;
 
     private void Start()
@@ -24,6 +24,10 @@ public class NPCController : MonoBehaviour
         if (player == null)
         {
             player = GameManager.Instance.PlayerInstance.transform;
+        }
+        else
+        {
+            target = player;
         }
 
         anim = GetComponent<Animator>();
@@ -35,38 +39,54 @@ public class NPCController : MonoBehaviour
         {
             player = GameManager.Instance.PlayerInstance.transform;
         }
-
-        if (!isOccupied)
+        else
         {
-            follow(player);
-            UpdateAnimator();
+            target = player;
         }
-        
+
+        if (!isOccupied) // Only follow if not occupied by combat
+        {
+            follow(target);
+        }
+        UpdateAnimator();
     }
 
     private void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("Enemy"))
         {
-            isOccupied = true;
+            if (target != other.transform) // Only change target if it's not already the enemy
+            {
+                target = other.transform;
+                Debug.Log("Enemy detected. Switching target.");
+            }
 
-            anim.SetBool("attack",true);
-            follow(other.transform);
+            if (Vector3.Distance(transform.position, target.position) <= stoppingDistance)
+            {
+                // Trigger attack
+                isOccupied = true; // NPC is now occupied with combat
+                AttackEnemy();
+            }
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        //Stops attacking
-        anim.SetBool("attack", false);
-        isOccupied = false;
+        if (other.CompareTag("Enemy"))
+        {
+            // Stops attacking and switches back to the player
+            anim.SetBool("attack", false);
+            isOccupied = false;
+            target = player;
+            Debug.Log("Enemy left the radius. Returning to follow player.");
+        }
     }
 
     public void follow(Transform target)
     {
         Vector3 direction = target.position - transform.position;
 
-        if (direction.magnitude > stoppingDistance && direction.magnitude < catchUpDistance) //Check if NPC is within normal following distance
+        if (direction.magnitude > stoppingDistance && direction.magnitude < catchUpDistance)
         {
             Vector3 moveDirection = direction.normalized * followSpeed * Time.deltaTime;
 
@@ -74,7 +94,9 @@ public class NPCController : MonoBehaviour
 
             direction.y = 0;
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(direction), Time.deltaTime * followSpeed);
-        } else if (direction.magnitude > catchUpDistance) //If NPC is too far from player
+
+        }
+        else if (direction.magnitude > catchUpDistance)
         {
             Vector3 moveDirection = direction.normalized * catchUpSpeed * Time.deltaTime;
 
@@ -85,23 +107,21 @@ public class NPCController : MonoBehaviour
         }
     }
 
+    private void AttackEnemy()
+    {
+        anim.SetBool("attack", true); // Trigger the attack animation
+        // You can add other attack logic here, such as damage dealing or cooldown
+    }
+
     private void UpdateAnimator()
     {
         // Calculate speed by comparing the current position with the last position
         float movementSpeed = (transform.position - lastPosition).magnitude / Time.deltaTime;
 
         // If the NPC is not moving, set speed to 0
-        if (movementSpeed > 0.01f)
-        {
-            anim.SetFloat("speed", movementSpeed);
-        }
-        else
-        {
-            anim.SetFloat("speed", 0f);
-        }
+        anim.SetFloat("speed", movementSpeed > 0.01f ? movementSpeed : 0f);
 
         // Update the last position for the next frame
         lastPosition = transform.position;
     }
-
 }

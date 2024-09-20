@@ -51,7 +51,7 @@ public class NPCController : MonoBehaviour
             isOccupied = true;
 
             anim.SetBool("attack",true);
-
+            follow(other.transform);
         }
     }
 

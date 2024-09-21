@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     public List<GameObject> NPCList;
     static GameManager _instance;
     public Action<int> OnScoreValueChange;
+    public bool loadGameData;
     public static GameManager Instance => _instance;
 
     private int _score;
@@ -42,7 +43,7 @@ public class GameManager : MonoBehaviour
         }
 
         Destroy(gameObject);
-
+        
     }
 
     private void Start()
@@ -50,12 +51,26 @@ public class GameManager : MonoBehaviour
 
         //health = maxHealth;
     }
-
+    /*void onSceneLoaded (Scene scene, LoadSceneMode mode)
+    {
+        if (loadGameData)
+        {
+            LoadGameData();
+        }
+    }*/
     public void LoadScene(string SceneName)
     {
         SceneManager.LoadScene(SceneName);
     }
 
+    public void DontLoadGameData()
+    {
+        loadGameData = true;
+    }
+    public void LoadGameDataOnStart()
+    {
+        loadGameData = true;
+    }
     public void GameOver()
     {
         Destroy(gameObject);
@@ -144,6 +159,14 @@ public class GameManager : MonoBehaviour
             }
         }
     }
+    public void LoadGameData()
+    {
+        LoadGameManager();
+        LoadNPCs();
+        Respawn();
+        GameManager.Instance.PlayerInstance.LoadPlayer();
+    }
+
 
     public void SaveGameManager()
     {
@@ -155,6 +178,16 @@ public class GameManager : MonoBehaviour
         GameManagerData data = SaveSystem.LoadGameManager();
 
         score = data.score;
+
+        if (currentCheckpoint != null)
+        {
+            currentCheckpoint.position = new Vector3(data.currentCheckpointPos[0], data.currentCheckpointPos[1], data.currentCheckpointPos[2]);
+        }
+        else
+        {
+            Debug.LogError("Checkpoint Transform is not assigned!");
+        }
+
     }
 }
 

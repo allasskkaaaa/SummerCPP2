@@ -58,10 +58,14 @@ public class GameManagerData
     {
         score = gm.score;
 
-        currentCheckpointPos = new float[3];
-        currentCheckpointPos[0] = gm.currentCheckpoint.position.x;
-        currentCheckpointPos[1] = gm.currentCheckpoint.position.y;
-        currentCheckpointPos[2] = gm.currentCheckpoint.position.z;
+        if (gm.currentCheckpoint != null)
+        {
+            currentCheckpointPos = new float[3];
+            currentCheckpointPos[0] = gm.currentCheckpoint.position.x;
+            currentCheckpointPos[1] = gm.currentCheckpoint.position.y;
+            currentCheckpointPos[2] = gm.currentCheckpoint.position.z;
+        }
+        
     }
      
 }

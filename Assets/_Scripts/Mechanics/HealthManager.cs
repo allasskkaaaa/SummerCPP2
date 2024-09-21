@@ -18,7 +18,7 @@ public class HealthManager : MonoBehaviour
     private void Start()
     {
         anim = GetComponent<Animator>();
-        bloodParticles.Clear();
+        bloodParticles.Stop();
 
         if (gameObject.CompareTag("Player"))
         {

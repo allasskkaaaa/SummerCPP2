@@ -150,8 +150,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 20
   lifetime: 3
-  bulletDamage: 20
-  shooter: {fileID: 0}
+  bulletDamage: 50
+  shooter: {fileID: 9023572153099319514, guid: bc2f0dced5498fc4d96d2ecd262c0990, type: 3}
 --- !u!114 &4233298387772718087
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -177,7 +177,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12f6a7fa5cb6699459326cbf0376c9b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 20
+  damage: 50
   ignore:
   - {fileID: 9023572153099319514, guid: bc2f0dced5498fc4d96d2ecd262c0990, type: 3}
   - {fileID: 8314127594421994087, guid: 68701caa1e05e0649b09f7caa223cef5, type: 3}

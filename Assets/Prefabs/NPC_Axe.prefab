@@ -1375,7 +1375,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthBar: {fileID: 8049749832675543662}
   bloodParticles: {fileID: 5335154546866054010}
-  health: 40
+  health: 100
   maxHealth: 100
   maxLives: 0
   lives: 1

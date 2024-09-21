@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: 6151562123602210658}
   - component: {fileID: 5401717881889803762}
   - component: {fileID: 7421246065489893880}
-  - component: {fileID: 4890421506070142212}
   - component: {fileID: 4233298387772718087}
+  - component: {fileID: 8115206811948400785}
   m_Layer: 0
   m_Name: PlayerProjectile
   m_TagString: Untagged
@@ -152,22 +152,6 @@ MonoBehaviour:
   lifetime: 3
   bulletDamage: 20
   shooter: {fileID: 0}
---- !u!114 &4890421506070142212
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4601070124481090642}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7aae756e52bdf9b43aa23683ec21a8ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 40
-  ignore:
-  - {fileID: 9023572153099319514, guid: bc2f0dced5498fc4d96d2ecd262c0990, type: 3}
-  - {fileID: 8314127594421994087, guid: 68701caa1e05e0649b09f7caa223cef5, type: 3}
 --- !u!114 &4233298387772718087
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -181,3 +165,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   score: 40
+--- !u!114 &8115206811948400785
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4601070124481090642}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12f6a7fa5cb6699459326cbf0376c9b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 20
+  ignore:
+  - {fileID: 9023572153099319514, guid: bc2f0dced5498fc4d96d2ecd262c0990, type: 3}
+  - {fileID: 8314127594421994087, guid: 68701caa1e05e0649b09f7caa223cef5, type: 3}

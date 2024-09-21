@@ -150,7 +150,7 @@ MonoBehaviour:
   moveSpeed: 20
   lifetime: 3
   bulletDamage: 20
-  shooter: {fileID: 0}
+  shooter: {fileID: 4361486057515876038, guid: e8f5d5ee596ed3e46aa004867ff189fe, type: 3}
 --- !u!114 &4890421506070142212
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -164,4 +164,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 5
-  user: {fileID: 4361486057515876038, guid: e8f5d5ee596ed3e46aa004867ff189fe, type: 3}
+  ignore:
+  - {fileID: 4361486057515876038, guid: e8f5d5ee596ed3e46aa004867ff189fe, type: 3}
+  - {fileID: 7289751613847760129, guid: b690d479ccc69cd44a6992eaaaf540f4, type: 3}

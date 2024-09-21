@@ -7,9 +7,13 @@ public class ScorePickup : MonoBehaviour
     public int score = 40;
     private void OnTriggerEnter(Collider collision)
     {
-        Debug.Log("Score increased");
-        GameManager.Instance.score += score;
-        Destroy(gameObject);
+        if (collision.CompareTag("Player"))
+        {
+            Debug.Log("Score increased");
+            GameManager.Instance.score += score;
+            Destroy(gameObject);
+        }
+        
         
     }
 

@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Damage : MonoBehaviour
+public class BulletDamage : MonoBehaviour
 {
     [SerializeField] private int damage = 5;
     [SerializeField] private List<GameObject> ignore; // Specify the user to avoid them
 
-    private void OnTriggerEnter(Collider hit)
+    private void OnColliderEnter(Collision hit)
     {
         GameObject target = hit.gameObject;
 

@@ -9,6 +9,7 @@ public class SaveGameTrigger : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            Debug.Log("Game data has been saved.");
             GameManager.Instance.SaveGameManager();
             GameManager.Instance.SaveNPCs();
             other.gameObject.GetComponent<PlayerController>().SavePlayer();

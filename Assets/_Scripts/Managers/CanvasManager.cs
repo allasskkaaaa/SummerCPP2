@@ -55,10 +55,10 @@ public class CanvasManager : MonoBehaviour
             resumeButton.onClick.AddListener(() => SetMenus(null, pauseMenu));
 
         if (returnToMenu)
-            returnToMenu.onClick.AddListener(() => GameManager.Instance.returnToMenu());
+            returnToMenu.onClick.AddListener(() => GameManager.Instance.ReturnToMenu());
 
         if (playButton)
-            playButton.onClick.AddListener(() => GameManager.Instance.startGame());
+            playButton.onClick.AddListener(() => GameManager.Instance.StartGame());
 
 
         if (settingsButton)

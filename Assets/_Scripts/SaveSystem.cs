@@ -135,10 +135,6 @@ public static class SaveSystem
 
     public static void SaveNPCList(List<GameObject> npcList)
     {
-        BinaryFormatter formatter = new BinaryFormatter();
-        string path = Application.persistentDataPath + "/npcList.gbr";
-        FileStream stream = new FileStream(path, FileMode.Create);
-
         NPCDataList data = new NPCDataList();
 
         // Loop through the NPC list and save relevant data
@@ -147,32 +143,43 @@ public static class SaveSystem
             NPCController npcController = npc.GetComponent<NPCController>();
             HealthManager healthManager = npc.GetComponent<HealthManager>();
 
-            NPCData npcData = new NPCData(npcController, healthManager);
-            data.npcDataList.Add(npcData);
+            if (npcController != null && healthManager != null) // Check for null
+            {
+                NPCData npcData = new NPCData(npcController, healthManager);
+                data.npcDataList.Add(npcData);
+            }
+            else
+            {
+                Debug.LogWarning("NPC or HealthManager component is missing on " + npc.name);
+            }
         }
 
-        formatter.Serialize(stream, data);
-        stream.Close();
+        string path = Application.persistentDataPath + "/npcList.gbr";
+        using (FileStream stream = new FileStream(path, FileMode.Create))
+        {
+            BinaryFormatter formatter = new BinaryFormatter();
+            formatter.Serialize(stream, data);
+        }
     }
 
     public static NPCDataList LoadNPCList()
     {
         string path = Application.persistentDataPath + "/npcList.gbr";
+
         if (File.Exists(path))
         {
-            BinaryFormatter formatter = new BinaryFormatter();
-            FileStream stream = new FileStream(path, FileMode.Open);
-
-            NPCDataList data = formatter.Deserialize(stream) as NPCDataList;
-            stream.Close();
-
-            return data;
+            using (FileStream stream = new FileStream(path, FileMode.Open))
+            {
+                BinaryFormatter formatter = new BinaryFormatter();
+                return formatter.Deserialize(stream) as NPCDataList;
+            }
         }
         else
         {
-            Debug.LogError("NPC save file not found in " + path);
+            Debug.Log("NPC save file not found in " + path);
             return null;
         }
     }
+
 
 }

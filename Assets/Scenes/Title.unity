@@ -328,6 +328,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6a3a9536aa0b934db8331a01871286e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  NPCPrefab: {fileID: 8314127594421994087, guid: 68701caa1e05e0649b09f7caa223cef5, type: 3}
   NPCList: []
   loadGameData: 0
   playerPrefab: {fileID: 9071291066955798496, guid: bc2f0dced5498fc4d96d2ecd262c0990, type: 3}

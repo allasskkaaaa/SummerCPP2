@@ -3,7 +3,10 @@ guid: a6a3a9536aa0b934db8331a01871286e
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - NPCPrefab: {fileID: 8314127594421994087, guid: 68701caa1e05e0649b09f7caa223cef5, type: 3}
+  - playerPrefab: {instanceID: 0}
+  - currentCheckpoint: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

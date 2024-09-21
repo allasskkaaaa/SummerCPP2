@@ -171,7 +171,7 @@ public class GameManager : MonoBehaviour
         LoadGameManager(); // Load game manager data
         LoadNPCs(); // Load NPCs
         SpawnPlayer(currentCheckpoint); // Respawn player
-        inventorymanager.LoadInventory();
+        //inventorymanager.LoadInventory();
     }
 
     public void SaveGameManager()

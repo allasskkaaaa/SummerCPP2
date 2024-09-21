@@ -58,8 +58,13 @@ public class InventoryData
 {
     public bool isPrimaryFilled;
     public bool isSecondaryFilled;
+
+    public string primaryObjectName; // Name of the object in the primary slot
+    public string secondaryObjectName; // Name of the object in the secondary slot
+
     public float[] primaryObjectPos;
     public float[] primaryObjectRot;
+
     public float[] secondaryObjectPos;
     public float[] secondaryObjectRot;
 
@@ -68,28 +73,39 @@ public class InventoryData
         isPrimaryFilled = inventoryManager.isPrimaryFilled;
         isSecondaryFilled = inventoryManager.isSecondaryFilled;
 
-        primaryObjectPos = new float[3];
-        primaryObjectPos[0] = inventoryManager.primaryObject.transform.position.x;
-        primaryObjectPos[1] = inventoryManager.primaryObject.transform.position.y;
-        primaryObjectPos[2] = inventoryManager.primaryObject.transform.position.z;
+        if (inventoryManager.primaryObject != null)
+        {
+            primaryObjectName = inventoryManager.primaryObject.name.Replace("(Clone)", "").Trim(); // Store the object's name, removing the "(Clone)" suffix Unity adds
+            primaryObjectPos = new float[3];
+            primaryObjectPos[0] = inventoryManager.primaryObject.transform.position.x;
+            primaryObjectPos[1] = inventoryManager.primaryObject.transform.position.y;
+            primaryObjectPos[2] = inventoryManager.primaryObject.transform.position.z;
 
-        primaryObjectRot = new float[3];
-        primaryObjectRot[0] = inventoryManager.primaryObject.transform.rotation.x;
-        primaryObjectRot[1] = inventoryManager.primaryObject.transform.rotation.y;
-        primaryObjectRot[2] = inventoryManager.primaryObject.transform.rotation.z;
+            primaryObjectRot = new float[4];
+            primaryObjectRot[0] = inventoryManager.primaryObject.transform.rotation.x;
+            primaryObjectRot[1] = inventoryManager.primaryObject.transform.rotation.y;
+            primaryObjectRot[2] = inventoryManager.primaryObject.transform.rotation.z;
+            primaryObjectRot[3] = inventoryManager.primaryObject.transform.rotation.w;
+        }
 
-        secondaryObjectPos = new float[3];
-        secondaryObjectPos[0] = inventoryManager.secondaryObject.transform.position.x;
-        secondaryObjectPos[1] = inventoryManager.secondaryObject.transform.position.y;
-        secondaryObjectPos[2] = inventoryManager.secondaryObject.transform.position.z;
+        if (inventoryManager.secondaryObject != null)
+        {
+            secondaryObjectName = inventoryManager.secondaryObject.name.Replace("(Clone)", "").Trim(); // Store the object's name, removing the "(Clone)" suffix
+            secondaryObjectPos = new float[3];
+            secondaryObjectPos[0] = inventoryManager.secondaryObject.transform.position.x;
+            secondaryObjectPos[1] = inventoryManager.secondaryObject.transform.position.y;
+            secondaryObjectPos[2] = inventoryManager.secondaryObject.transform.position.z;
 
-        secondaryObjectRot = new float[3];
-        secondaryObjectRot[0] = inventoryManager.secondaryObject.transform.rotation.x;
-        secondaryObjectRot[1] = inventoryManager.secondaryObject.transform.rotation.y;
-        secondaryObjectRot[2] = inventoryManager.secondaryObject.transform.rotation.z;
+            secondaryObjectRot = new float[4];
+            secondaryObjectRot[0] = inventoryManager.secondaryObject.transform.rotation.x;
+            secondaryObjectRot[1] = inventoryManager.secondaryObject.transform.rotation.y;
+            secondaryObjectRot[2] = inventoryManager.secondaryObject.transform.rotation.z;
+            secondaryObjectRot[3] = inventoryManager.secondaryObject.transform.rotation.w;
+        }
     }
-
 }
+
+
 
 [System.Serializable]
 public class NPCData

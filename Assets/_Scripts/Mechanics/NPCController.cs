@@ -126,4 +126,24 @@ public class NPCController : MonoBehaviour
         // Update the last position for the next frame
         lastPosition = transform.position;
     }
+
+    public void SaveNPC()
+    {
+        SaveSystem.SaveNPC(this, healthManager);
+    }
+
+    public void LoadNPC()
+    {
+        NPCData data = SaveSystem.LoadNPC();
+
+        Vector3 position;
+        position.x = data.NPCPos[0];
+        position.y = data.NPCPos[1];
+        position.z = data.NPCPos[2];
+        transform.position = position;
+
+
+        healthManager.health = data.health;
+
+    }
 }

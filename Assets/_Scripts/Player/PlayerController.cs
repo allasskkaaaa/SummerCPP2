@@ -104,7 +104,9 @@ public class PlayerController : MonoBehaviour
 
         canShoot = data.canShoot;
         canMelee = data.canMelee;
-        speed = data.speed;
-        rotationSpeed = data.rotationSpeed;
+
+        healthManager.health = data.health;
+        healthManager.lives = data.lives;
+
     }
 }

@@ -10,11 +10,13 @@ public class EnemyController : MonoBehaviour
     private bool isAttacking = false;
     Animator anim;
     Rigidbody rb;
+    HealthManager healthManager;
 
     private void Start()
     {
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
+        healthManager = GetComponent<HealthManager>();
     }
 
     private void OnTriggerStay(Collider other)
@@ -76,5 +78,25 @@ public class EnemyController : MonoBehaviour
             direction.y = 0;
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(direction), Time.deltaTime * followSpeed);
         }
+    }
+
+    public void SaveEnemy()
+    {
+        SaveSystem.SaveEnemy(this, healthManager);
+    }
+
+    public void LoadEnemy()
+    {
+        EnemyData data = SaveSystem.LoadEnemy();
+
+        Vector3 position;
+        position.x = data.enemyPos[0];
+        position.y = data.enemyPos[1];
+        position.z = data.enemyPos[2];
+        transform.position = position;
+
+
+        healthManager.health = data.health;
+
     }
 }

@@ -43,8 +43,16 @@ public class Projectile : MonoBehaviour
             healthManager = other.gameObject.GetComponent<HealthManager>();
             healthManager.TakeDamage(bulletDamage);
         }
+       
+
+        if (other.gameObject.CompareTag("Wall"))
+        {
+            Destroy(other.gameObject);
+        }
+
         Destroy(gameObject);
     }
+
 
 
 }

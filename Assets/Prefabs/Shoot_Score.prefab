@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 809626740846680761}
   - component: {fileID: 8491117606318463753}
   - component: {fileID: 8611175373450776891}
+  - component: {fileID: 1170028076481493178}
   m_Layer: 0
   m_Name: Shoot_Score
   m_TagString: Score
@@ -99,9 +100,22 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1170028076481493178
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4013491133817090484}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d23baaf8ecd7ba14b8e8d24dd9dd87a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  score: 40

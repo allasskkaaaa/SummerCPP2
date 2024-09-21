@@ -80,23 +80,4 @@ public class EnemyController : MonoBehaviour
         }
     }
 
-    public void SaveEnemy()
-    {
-        SaveSystem.SaveEnemy(this, healthManager);
-    }
-
-    public void LoadEnemy()
-    {
-        EnemyData data = SaveSystem.LoadEnemy();
-
-        Vector3 position;
-        position.x = data.enemyPos[0];
-        position.y = data.enemyPos[1];
-        position.z = data.enemyPos[2];
-        transform.position = position;
-
-
-        healthManager.health = data.health;
-
-    }
 }

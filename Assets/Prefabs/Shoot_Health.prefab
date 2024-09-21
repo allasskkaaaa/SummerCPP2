@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4200263706902640853}
   - component: {fileID: 2531395729572285990}
   - component: {fileID: 7464378515257619329}
+  - component: {fileID: -1883298149211608313}
   m_Layer: 0
   m_Name: Shoot_Health
   m_TagString: Health
@@ -57,12 +58,25 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-1883298149211608313
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8297465238076777567}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7c75eeb1edce714483e0c7143d5140d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 40
 --- !u!1001 &5204864904322922023
 PrefabInstance:
   m_ObjectHideFlags: 0

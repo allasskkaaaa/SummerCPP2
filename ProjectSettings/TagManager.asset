@@ -18,6 +18,7 @@ TagManager:
   - PlayerHealthText
   - PlayerHealthBar
   - Bullet
+  - Wall
   layers:
   - Default
   - TransparentFX

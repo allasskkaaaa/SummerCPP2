@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3276568635107685202}
   m_Layer: 0
   m_Name: Shoot_Wall
-  m_TagString: Score
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

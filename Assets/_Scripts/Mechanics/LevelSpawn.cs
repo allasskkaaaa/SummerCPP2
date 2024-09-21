@@ -10,36 +10,36 @@ public class LevelSpawn : MonoBehaviour
     public List<Transform> EnemySpawnPoints;
     public List<GameObject> EnemyObjects;
 
-    public List<GameObject> spawnedObjects;
-    public List<GameObject> spawnedEnemies;
-
     public bool hasSpawned;
 
     private void OnTriggerEnter(Collider other)
     {
-        if (!hasSpawned)
+        if (!hasSpawned && other.CompareTag("Player"))
         {
-            foreach (Transform spawnPoint in ScoreSpawnPoints)
+            // Spawn score objects
+            if (ScoreSpawnPoints.Count > 0 && scoreObjects.Count > 0)
             {
-                // Pick a random object from the spawnObjects list
-                GameObject randomObject = scoreObjects[Random.Range(0, scoreObjects.Count)];
-
-                // Instantiate the random object at the spawn point
-                Instantiate(randomObject, spawnPoint.position, spawnPoint.rotation);
-
-                spawnedObjects.Add(randomObject);
+                foreach (Transform spawnPoint in ScoreSpawnPoints)
+                {
+                    GameObject randomObject = scoreObjects[Random.Range(0, scoreObjects.Count)];
+                    Instantiate(randomObject, spawnPoint.position, spawnPoint.rotation);
+                    Debug.Log($"Spawned {randomObject.name} at {spawnPoint.position}");
+                }
             }
 
-            foreach (Transform spawnPoint in EnemySpawnPoints)
+            // Spawn enemy objects
+            if (EnemySpawnPoints.Count > 0 && EnemyObjects.Count > 0)
             {
-
-                GameObject randomEnemy = EnemyObjects[Random.Range(0, EnemyObjects.Count)];
-                Instantiate(randomEnemy, spawnPoint.position, spawnPoint.rotation);
-
-                spawnedEnemies.Add(randomEnemy);
+                foreach (Transform spawnPoint in EnemySpawnPoints)
+                {
+                    GameObject randomEnemy = EnemyObjects[Random.Range(0, EnemyObjects.Count)];
+                    Instantiate(randomEnemy, spawnPoint.position, spawnPoint.rotation);
+                    Debug.Log($"Spawned {randomEnemy.name} at {spawnPoint.position}");
+                }
             }
 
             hasSpawned = true;
         }
     }
+
 }

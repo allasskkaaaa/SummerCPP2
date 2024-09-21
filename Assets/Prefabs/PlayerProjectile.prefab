@@ -164,7 +164,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7aae756e52bdf9b43aa23683ec21a8ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 5
+  damage: 40
   ignore:
   - {fileID: 9023572153099319514, guid: bc2f0dced5498fc4d96d2ecd262c0990, type: 3}
   - {fileID: 8314127594421994087, guid: 68701caa1e05e0649b09f7caa223cef5, type: 3}
@@ -180,5 +180,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d23baaf8ecd7ba14b8e8d24dd9dd87a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NPC: {fileID: 0}
-  shooter: {fileID: 9023572153099319514, guid: bc2f0dced5498fc4d96d2ecd262c0990, type: 3}
+  score: 40

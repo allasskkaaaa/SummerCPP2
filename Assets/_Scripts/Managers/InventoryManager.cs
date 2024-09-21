@@ -15,8 +15,6 @@ public class InventoryManager : MonoBehaviour
 
     private PlayerController pc; // Reference to PlayerController
 
-    public GameObject Axe;
-    public GameObject Gun;
     public void Start()
     {
         pc = FindObjectOfType<PlayerController>();
@@ -130,8 +128,6 @@ public class InventoryManager : MonoBehaviour
     {
         InventoryData data = SaveSystem.LoadInventory();
 
-        if (data == null) return; // Handle case where data is null
-
         isPrimaryFilled = data.isPrimaryFilled;
         isSecondaryFilled = data.isSecondaryFilled;
 
@@ -146,42 +142,37 @@ public class InventoryManager : MonoBehaviour
         }
 
         // Load and instantiate the saved primary object
-        if (isPrimaryFilled && !string.IsNullOrEmpty(data.primaryObjectName))
+        if (isPrimaryFilled)
         {
             GameObject primaryPrefab = Resources.Load<GameObject>(data.primaryObjectName);
             if (primaryPrefab != null)
             {
                 primaryObject = Instantiate(primaryPrefab, primarySlot.position, primarySlot.rotation, primarySlot);
+
+                // Set position and rotation for the primary object
                 primaryObject.transform.position = new Vector3(data.primaryObjectPos[0], data.primaryObjectPos[1], data.primaryObjectPos[2]);
                 primaryObject.transform.rotation = new Quaternion(data.primaryObjectRot[0], data.primaryObjectRot[1], data.primaryObjectRot[2], data.primaryObjectRot[3]);
 
                 // Update the PlayerController based on the primary object
                 UpdatePlayerController(primaryObject);
             }
-            else
-            {
-                Debug.Log($"Failed to load primary object: {data.primaryObjectName}");
-            }
         }
 
         // Load and instantiate the saved secondary object
-        if (isSecondaryFilled && !string.IsNullOrEmpty(data.secondaryObjectName))
+        if (isSecondaryFilled)
         {
             GameObject secondaryPrefab = Resources.Load<GameObject>(data.secondaryObjectName);
             if (secondaryPrefab != null)
             {
                 secondaryObject = Instantiate(secondaryPrefab, secondarySlot.position, secondarySlot.rotation, secondarySlot);
+
+                // Set position and rotation for the secondary object
                 secondaryObject.transform.position = new Vector3(data.secondaryObjectPos[0], data.secondaryObjectPos[1], data.secondaryObjectPos[2]);
                 secondaryObject.transform.rotation = new Quaternion(data.secondaryObjectRot[0], data.secondaryObjectRot[1], data.secondaryObjectRot[2], data.secondaryObjectRot[3]);
-            }
-            else
-            {
-                Debug.Log($"Failed to load secondary object: {data.secondaryObjectName}");
             }
         }
 
         Debug.Log("Inventory loaded successfully.");
     }
-
 
 }

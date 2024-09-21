@@ -7,10 +7,10 @@ public class HealthManager : MonoBehaviour
 {
     [SerializeField] private Image healthBar;
     [SerializeField] private ParticleSystem bloodParticles;
-    [SerializeField] private int health = 100;
+    [SerializeField] public int health = 100;
     [SerializeField] private int maxHealth = 100;
     [SerializeField] private int maxLives;
-    [SerializeField] private int lives = 1;
+    [SerializeField] public int lives = 1;
 
     [SerializeField] private TMP_Text healthText;
     
@@ -42,6 +42,8 @@ public class HealthManager : MonoBehaviour
         {
             healthBar = GameObject.FindWithTag("PlayerHealthBar").GetComponent<Image>();
         }
+
+        updateHealthBar();
     }
 
     public void TakeDamage(int damage)

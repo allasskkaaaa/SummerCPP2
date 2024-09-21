@@ -24,26 +24,6 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    /*private int _health;
-    public int health
-    {
-        get => _health;
-        set
-        {
-            //if (value <= 0) GameOver();
-            if (value <= 0) Respawn();
-            if (value > maxHealth) value = maxHealth;
-            _health = value;
-
-            OnLifeValueChange?.Invoke(_health);
-
-            Debug.Log($"Health have been set to {_health}");
-            //broadcast can happen here
-        }
-    }*/
-
-
-    //[SerializeField] private int maxHealth = 100;
     [SerializeField] private PlayerController playerPrefab;
 
     [HideInInspector] public PlayerController PlayerInstance => _playerinstance;

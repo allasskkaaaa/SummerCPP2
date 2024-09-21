@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
 
     Animator anim;
     CharacterController characterController;
+    HealthManager healthManager;
 
     public void OnMove(InputAction.CallbackContext context)
     {
@@ -28,7 +29,7 @@ public class PlayerController : MonoBehaviour
     {
         anim = GetComponent<Animator>();
         characterController = GetComponent<CharacterController>();
-
+        healthManager = GetComponent<HealthManager>();
     }
 
     private void Update()
@@ -78,4 +79,32 @@ public class PlayerController : MonoBehaviour
         anim.SetFloat("speed", currentSpeed);
     }
 
+    public IEnumerator Speedboost(float newSpeed, float length)
+    {
+        float originalSpeed = speed;
+        speed = newSpeed;
+        yield return new WaitForSeconds(length);
+        speed = originalSpeed;
+    }
+
+    public void SavePlayer()
+    {
+        SaveSystem.SavePlayer(this, healthManager);
+    }
+    
+    public void LoadPlayer()
+    {
+        PlayerData data = SaveSystem.LoadPlayer();
+
+        Vector3 position;
+        position.x = data.position[0];
+        position.y = data.position[1];
+        position.z = data.position[2];
+        transform.position = position;
+
+        canShoot = data.canShoot;
+        canMelee = data.canMelee;
+        speed = data.speed;
+        rotationSpeed = data.rotationSpeed;
+    }
 }

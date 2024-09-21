@@ -1712,6 +1712,18 @@ PrefabInstance:
       propertyPath: user
       value: 
       objectReference: {fileID: 8314127594421994087}
+    - target: {fileID: 469849181307228177, guid: 48a5d9f75edd77d45b7b9c3d31fc3c8b, type: 3}
+      propertyPath: ignore.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 469849181307228177, guid: 48a5d9f75edd77d45b7b9c3d31fc3c8b, type: 3}
+      propertyPath: ignore.Array.data[0]
+      value: 
+      objectReference: {fileID: 8314127594421994087}
+    - target: {fileID: 469849181307228177, guid: 48a5d9f75edd77d45b7b9c3d31fc3c8b, type: 3}
+      propertyPath: ignore.Array.data[1]
+      value: 
+      objectReference: {fileID: 9023572153099319514, guid: bc2f0dced5498fc4d96d2ecd262c0990, type: 3}
     - target: {fileID: 2479465848097067357, guid: 48a5d9f75edd77d45b7b9c3d31fc3c8b, type: 3}
       propertyPath: m_Name
       value: AxePivot

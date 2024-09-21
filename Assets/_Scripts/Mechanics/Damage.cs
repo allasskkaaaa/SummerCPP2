@@ -5,17 +5,21 @@ using UnityEngine;
 public class Damage : MonoBehaviour
 {
     public int damage = 5;
-    public GameObject user; // Specify the user to avoid them
+    public List<GameObject> ignore; // Specify the user to avoid them
 
     private void OnTriggerEnter(Collider hit)
     {
         GameObject target = hit.gameObject;
 
         // Check if the target is the user to ignore
-        if (target == user)
+        foreach (GameObject obj in ignore)
         {
-            return; // Exit the method if the target is the user
+            if (target.CompareTag(obj.tag))
+            {
+                return;
+            }
         }
+
 
         if (target.CompareTag("NPC") || target.CompareTag("Player") || target.CompareTag("Enemy"))
         {

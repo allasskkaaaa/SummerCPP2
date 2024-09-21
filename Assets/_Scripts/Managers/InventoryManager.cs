@@ -7,11 +7,11 @@ public class InventoryManager : MonoBehaviour
     public Transform primarySlot; // Hand slot
     public Transform secondarySlot; // Back slot
 
-    private GameObject primaryObject; // Item in primary slot
-    private GameObject secondaryObject; // Item in secondary slot
+    public GameObject primaryObject; // Item in primary slot
+    public GameObject secondaryObject; // Item in secondary slot
 
-    private bool isPrimaryFilled = false;
-    private bool isSecondaryFilled = false;
+    public bool isPrimaryFilled = false;
+    public bool isSecondaryFilled = false;
 
     private PlayerController pc; // Reference to PlayerController
 

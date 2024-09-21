@@ -11,8 +11,8 @@ public class Checkpoint : MonoBehaviour
         one, two, three, four, five, six, seven, eight
     }
 
-    [SerializeField] private Transform checkPointPos;
-    [SerializeField] private bool checkPointCaptured = false;
+    [SerializeField] public Transform checkPointPos;
+    [SerializeField] public bool checkPointCaptured = false;
     [SerializeField] private ParticleSystem captureVFX;
     [SerializeField] private levelNumber levelTransition;
     [SerializeField] SpawnManager spawnManager;

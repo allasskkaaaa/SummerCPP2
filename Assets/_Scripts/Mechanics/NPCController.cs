@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class NPCController : MonoBehaviour
 {
-    [SerializeField] private float detectionRadius = 10;
-    [SerializeField] private int attackSpeed = 3;
-    [SerializeField] private int speed = 7;
-    [SerializeField] private float followSpeed = 4f;
-    [SerializeField] private float stoppingDistance = 2f;
-    [SerializeField] private float catchUpSpeed = 8f;
-    [SerializeField] private float catchUpDistance = 12f;
+    [SerializeField] public float detectionRadius = 10;
+    [SerializeField] public int attackSpeed = 3;
+    [SerializeField] public int speed = 7;
+    [SerializeField] public float followSpeed = 4f;
+    [SerializeField] public float stoppingDistance = 2f;
+    [SerializeField] public float catchUpSpeed = 8f;
+    [SerializeField] public float catchUpDistance = 12f;
     private bool isOccupied = false;
     private Vector3 lastPosition;
 
@@ -18,6 +18,7 @@ public class NPCController : MonoBehaviour
     [SerializeField] private Transform player;
     [SerializeField] private Transform target;
     Animator anim;
+    HealthManager healthManager;
 
     private void Start()
     {
@@ -31,6 +32,7 @@ public class NPCController : MonoBehaviour
         }
 
         anim = GetComponent<Animator>();
+        healthManager = GetComponent<HealthManager>();
     }
 
     private void Update()

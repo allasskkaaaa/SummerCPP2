@@ -18,7 +18,7 @@ public class HealthManager : MonoBehaviour
     private void Start()
     {
         anim = GetComponent<Animator>();
-        bloodParticles.Stop();
+        //bloodParticles.Stop();
 
         if (gameObject.CompareTag("Player"))
         {
@@ -51,7 +51,11 @@ public class HealthManager : MonoBehaviour
         health -= damage;
         Debug.Log(damage + " damage has been taken.");
         updateHealthBar();
-        bloodParticles.Play();
+        if (bloodParticles)
+        {
+            bloodParticles.Play();
+        }
+        
         if (gameObject.CompareTag("Player"))
         {
             healthText.text = "Health: " + health;

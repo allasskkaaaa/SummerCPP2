@@ -1,6 +1,7 @@
 using System.IO;
 using UnityEngine;
 using System.Runtime.Serialization.Formatters.Binary;
+using System.Collections.Generic;
 
 public static class SaveSystem
 {
@@ -35,7 +36,7 @@ public static class SaveSystem
             return null;
         }
     }
-
+/*
     public static void SaveCheckpoint(Checkpoint checkpoint)
     {
         BinaryFormatter formatter = new BinaryFormatter();
@@ -66,7 +67,7 @@ public static class SaveSystem
             Debug.LogError("Checkpoint save file not found in " + path);
             return null;
         }
-    }
+    }*/
 
     public static void SaveGameManager(GameManager gm)
     {
@@ -132,30 +133,40 @@ public static class SaveSystem
         }
     }
 
-    public static void SaveNPC(NPCController npc, HealthManager healthManager)
+    public static void SaveNPCList(List<GameObject> npcList)
     {
         BinaryFormatter formatter = new BinaryFormatter();
-        string path = Application.persistentDataPath + "/npc.gbr";
+        string path = Application.persistentDataPath + "/npcList.gbr";
         FileStream stream = new FileStream(path, FileMode.Create);
-        NPCData data = new NPCData(npc, healthManager);
+
+        NPCDataList data = new NPCDataList();
+
+        // Loop through the NPC list and save relevant data
+        foreach (GameObject npc in npcList)
+        {
+            NPCController npcController = npc.GetComponent<NPCController>();
+            HealthManager healthManager = npc.GetComponent<HealthManager>();
+
+            NPCData npcData = new NPCData(npcController, healthManager);
+            data.npcDataList.Add(npcData);
+        }
 
         formatter.Serialize(stream, data);
         stream.Close();
     }
 
-    public static NPCData LoadNPC()
+    public static NPCDataList LoadNPCList()
     {
-        string path = Application.persistentDataPath + "/npc.gbr";
+        string path = Application.persistentDataPath + "/npcList.gbr";
         if (File.Exists(path))
         {
             BinaryFormatter formatter = new BinaryFormatter();
             FileStream stream = new FileStream(path, FileMode.Open);
 
-            NPCData data = formatter.Deserialize(stream) as NPCData;
+            NPCDataList data = formatter.Deserialize(stream) as NPCDataList;
             stream.Close();
 
             return data;
-
         }
         else
         {
@@ -164,5 +175,4 @@ public static class SaveSystem
         }
     }
 
-    
 }

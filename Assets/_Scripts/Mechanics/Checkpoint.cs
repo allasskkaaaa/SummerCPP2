@@ -10,17 +10,10 @@ public class Checkpoint : MonoBehaviour
     [SerializeField] public Transform checkPointPos;
     [SerializeField] public bool checkPointCaptured = false;
     [SerializeField] private ParticleSystem captureVFX;
-    [SerializeField] SpawnManager spawnManager;
-    private int level;
 
     HealthManager healthManager;
     
-    // Start is called before the first frame update
-
-    private void Start()
-    {
-        
-    }
+    
     private void OnTriggerEnter(Collider other)
     {
         if ( other.CompareTag("Player"))
@@ -30,7 +23,6 @@ public class Checkpoint : MonoBehaviour
                 checkPointCaptured = true;
                 GameManager.Instance.UpdateCheckpoint(checkPointPos);
                 Instantiate(captureVFX, checkPointPos);
-                GameManager.Instance.level = level;
             }
 
             healthManager = other.gameObject.GetComponent<HealthManager>();
@@ -38,5 +30,10 @@ public class Checkpoint : MonoBehaviour
         }
         
     }
+
+    /*public void saveCheckpoint()
+    {
+        SaveSystem.SaveCheckpoint(this);
+    }*/
 
 }

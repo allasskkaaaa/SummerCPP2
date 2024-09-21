@@ -6,7 +6,7 @@ using UnityEngine.UIElements;
 [System.Serializable]
 public class PlayerData 
 {
-    public float[] position;
+    //public float[] position;
     public float speed;
     public float rotationSpeed;
     public bool canShoot;
@@ -16,10 +16,10 @@ public class PlayerData
 
     public PlayerData (PlayerController player, HealthManager healthManager)
     {
-        position = new float[3];
+        /*position = new float[3];
         position[0] = player.transform.position.x;
         position[1] = player.transform.position.y;
-        position[2] = player.transform.position.z;
+        position[2] = player.transform.position.z;*/
 
         canShoot = player.canShoot;
         canMelee = player.canMelee;
@@ -30,25 +30,38 @@ public class PlayerData
     }
 }
 
-[System.Serializable]
+/*[System.Serializable]
 public class CheckpointData
 {
 
     public bool checkPointCaptured;
+    public float[] checkPointPos;
 
     public CheckpointData(Checkpoint checkPoint)
     {
         checkPointCaptured = checkPoint.checkPointCaptured;
+
+        checkPointPos = new float[3];
+        checkPointPos[0] = checkPoint.transform.position.x;
+        checkPointPos[1] = checkPoint.transform.position.y;
+        checkPointPos[2] = checkPoint.transform.position.z;
     }
-}
+}*/
+
 [System.Serializable]
 public class GameManagerData
 {
     public int score;
+    public float[] currentCheckpointPos;
 
     public GameManagerData(GameManager gm)
     {
         score = gm.score;
+
+        currentCheckpointPos = new float[3];
+        currentCheckpointPos[0] = gm.currentCheckpoint.position.x;
+        currentCheckpointPos[1] = gm.currentCheckpoint.position.y;
+        currentCheckpointPos[2] = gm.currentCheckpoint.position.z;
     }
      
 }
@@ -105,8 +118,6 @@ public class InventoryData
     }
 }
 
-
-
 [System.Serializable]
 public class NPCData
 {
@@ -123,3 +134,10 @@ public class NPCData
         NPCPos[2] = npc.transform.position.z;
     }
 }
+
+[System.Serializable]
+public class NPCDataList
+{
+    public List<NPCData> npcDataList = new List<NPCData>();
+}
+

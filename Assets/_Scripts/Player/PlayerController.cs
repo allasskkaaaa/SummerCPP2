@@ -95,11 +95,12 @@ public class PlayerController : MonoBehaviour
     public void LoadPlayer()
     {
         PlayerData data = SaveSystem.LoadPlayer();
+        GameManagerData gameManagerData = SaveSystem.LoadGameManager();
 
         Vector3 position;
-        position.x = data.position[0];
-        position.y = data.position[1];
-        position.z = data.position[2];
+        position.x = gameManagerData.currentCheckpointPos[0];
+        position.y = gameManagerData.currentCheckpointPos[1];
+        position.z = gameManagerData.currentCheckpointPos[2];
         transform.position = position;
 
         canShoot = data.canShoot;

@@ -1,15 +1,16 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public int level = 1;
+    public List<GameObject> NPCList;
     static GameManager _instance;
-    //public Action<int> OnLifeValueChange;
     public Action<int> OnScoreValueChange;
     public static GameManager Instance => _instance;
 
@@ -28,7 +29,7 @@ public class GameManager : MonoBehaviour
 
     [HideInInspector] public PlayerController PlayerInstance => _playerinstance;
     PlayerController _playerinstance = null;
-    Transform currentCheckpoint;
+    public Transform currentCheckpoint;
 
     // Start is called before the first frame update
     void Awake()
@@ -102,6 +103,58 @@ public class GameManager : MonoBehaviour
     public void victory()
     {
         SceneManager.LoadScene(3);
+    }
+
+    public void SaveNPCs()
+    {
+        SaveSystem.SaveNPCList(NPCList);
+    }
+
+    public void LoadNPCs()
+    {
+        NPCDataList data = SaveSystem.LoadNPCList();
+        if (data != null)
+        {
+            // Clear existing NPCs
+            foreach (GameObject npc in NPCList)
+            {
+                Destroy(npc);
+            }
+            NPCList.Clear();
+
+            // Loop through the saved NPC data and respawn NPCs
+            foreach (NPCData npcData in data.npcDataList)
+            {
+                // Instantiate an NPC prefab (assumes you have an NPC prefab assigned)
+
+                foreach (GameObject npcPrefab in NPCList)
+                {
+                    GameObject npc = Instantiate(npcPrefab);
+
+                    // Set the NPC's position
+                    npc.transform.position = new Vector3(npcData.NPCPos[0], npcData.NPCPos[1], npcData.NPCPos[2]);
+
+                    // Assign the saved health
+                    HealthManager healthManager = npc.GetComponent<HealthManager>();
+                    healthManager.health = npcData.health;
+
+                    NPCList.Add(npc);
+                }
+                
+            }
+        }
+    }
+
+    public void SaveGameManager()
+    {
+        SaveSystem.SaveGameManager(this);
+    }
+
+    public void LoadGameManager()
+    {
+        GameManagerData data = SaveSystem.LoadGameManager();
+
+        score = data.score;
     }
 }
 

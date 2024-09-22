@@ -5,22 +5,12 @@ public class Pickup : MonoBehaviour
     public GameObject weaponPrefab; // Prefab to instantiate
     private InventoryManager inventoryManager; // Reference to InventoryManager
 
-    private void Start()
-    {
-        // Find the InventoryManager in the scene
-        inventoryManager = FindObjectOfType<InventoryManager>();
-
-        if (inventoryManager == null)
-        {
-            Debug.LogError("InventoryManager not found in the scene.");
-        }
-    }
-
     private void OnTriggerEnter(Collider other)
     {
         // Check if the player is the one who collided with the pickup
-        if (other.CompareTag("Player") && inventoryManager != null)
+        if (other.CompareTag("Player"))
         {
+            inventoryManager = other.gameObject.GetComponent<InventoryManager>();
             // Call the PickUpItem method to add the item to the inventory
             inventoryManager.EquipItem(weaponPrefab);
 

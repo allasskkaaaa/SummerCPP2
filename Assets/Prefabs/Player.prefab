@@ -1058,8 +1058,10 @@ MonoBehaviour:
   rotationSpeed: 0.4
   canShoot: 0
   canMelee: 0
-  primarySlotFilled: 0
-  secondarySlotFilled: 0
+  axe: {fileID: 2479465848097067357, guid: 48a5d9f75edd77d45b7b9c3d31fc3c8b, type: 3}
+  gun: {fileID: 7375696825277333005, guid: e75c88a60dbdcf84a8071ed8617f450d, type: 3}
+  healthManager: {fileID: 8991051142879621933}
+  inventoryManager: {fileID: 4904947760964322031}
 --- !u!114 &109868121182052162
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1169,6 +1171,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   primarySlot: {fileID: 2877105717123478974}
   secondarySlot: {fileID: 4843731497067460606}
+  primaryObject: {fileID: 0}
+  secondaryObject: {fileID: 0}
+  isPrimaryFilled: 0
+  isSecondaryFilled: 0
 --- !u!114 &4759473290657678963
 MonoBehaviour:
   m_ObjectHideFlags: 0

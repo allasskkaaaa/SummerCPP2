@@ -4,6 +4,7 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.XR;
+using static UnityEditor.IMGUI.Controls.PrimitiveBoundsHandle;
 
 public class PlayerController : MonoBehaviour
 {
@@ -13,12 +14,12 @@ public class PlayerController : MonoBehaviour
     public bool canShoot = false;
     public bool canMelee = false;
 
-    public bool primarySlotFilled = false;
-    public bool secondarySlotFilled = false;
-
+    public GameObject axe;
+    public GameObject gun;
     Animator anim;
     CharacterController characterController;
-    HealthManager healthManager;
+    public HealthManager healthManager;
+    public InventoryManager inventoryManager;
 
     public void OnMove(InputAction.CallbackContext context)
     {
@@ -28,8 +29,14 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         anim = GetComponent<Animator>();
-        characterController = GetComponent<CharacterController>();
-        healthManager = GetComponent<HealthManager>();
+        characterController = this.GetComponent<CharacterController>();
+        healthManager = this.GetComponent<HealthManager>();
+        inventoryManager = this.GetComponent<InventoryManager>();
+
+        if (GameManager.Instance.loadGameData == true)
+        {
+            LoadPlayer();
+        }
     }
 
     private void Update()
@@ -89,7 +96,7 @@ public class PlayerController : MonoBehaviour
 
     public void SavePlayer()
     {
-        SaveSystem.SavePlayer(this, healthManager);
+        SaveSystem.SavePlayer(this, healthManager, inventoryManager);
     }
     
     public void LoadPlayer()
@@ -109,5 +116,54 @@ public class PlayerController : MonoBehaviour
         healthManager.health = data.health;
         healthManager.lives = data.lives;
 
+        inventoryManager.isPrimaryFilled = data.isPrimaryFilled;
+        inventoryManager.isSecondaryFilled = data.isSecondaryFilled;
+
+
+        // Load and equip primary object based on saved tag
+        if (data.isPrimaryFilled)
+        {
+            if (data.primaryObjectTag == "Axe")
+            {
+                inventoryManager.EquipItem(axe); // Use EquipItem to instantiate and equip the axe
+                Debug.Log("Loaded primary slot to Axe");
+            }
+            else if (data.primaryObjectTag == "Gun")
+            {
+                inventoryManager.EquipItem(gun); // Use EquipItem to instantiate and equip the gun
+                Debug.Log("Loaded primary slot to Gun");
+            }
+            else
+            {
+                Debug.LogWarning("Object tag does not match any of the prefabs");
+            }
+        }
+        else
+        {
+            Debug.Log("Primary slot saved as empty");
+        }
+
+        // Load and equip secondary object based on saved tag
+        if (data.isSecondaryFilled)
+        {
+            if (data.secondaryObjectTag == axe.tag)
+            {
+                inventoryManager.EquipItem(axe); // Use EquipItem to instantiate and equip the axe in the secondary slot
+                Debug.Log("Loaded secondary slot to Axe");
+            }
+            else if (data.secondaryObjectTag == gun.tag)
+            {
+                inventoryManager.EquipItem(gun); // Use EquipItem to instantiate and equip the gun in the secondary slot
+                Debug.Log("Loaded secondary slot to Axe");
+            }
+            else
+            {
+                Debug.Log("Object tag does not match any of the prefabs");
+            }
+        }
+        else
+        {
+            Debug.Log("Secondary slot saved as empty");
+        }
     }
 }

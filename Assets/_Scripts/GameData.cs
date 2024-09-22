@@ -6,27 +6,43 @@ using UnityEngine.UIElements;
 [System.Serializable]
 public class PlayerData 
 {
-    //public float[] position;
+    //Player Controller
     public float speed;
     public float rotationSpeed;
     public bool canShoot;
     public bool canMelee;
+
+    //Health Manager
     public int health;
     public int lives;
 
-    public PlayerData (PlayerController player, HealthManager healthManager)
-    {
-        /*position = new float[3];
-        position[0] = player.transform.position.x;
-        position[1] = player.transform.position.y;
-        position[2] = player.transform.position.z;*/
+    //Inventory Manager
+    public bool isPrimaryFilled;
+    public bool isSecondaryFilled;
 
+    public string primaryObjectTag; // Name of the object in the primary slot
+    public string secondaryObjectTag; // Name of the object in the secondary slot
+    public PlayerData (PlayerController player, HealthManager healthManager, InventoryManager inventoryManager)
+    {
         canShoot = player.canShoot;
         canMelee = player.canMelee;
 
         health = healthManager.health;
-        lives = healthManager.lives; 
+        lives = healthManager.lives;
 
+        isPrimaryFilled = inventoryManager.isPrimaryFilled;
+        isSecondaryFilled = inventoryManager.isSecondaryFilled;
+
+        if (inventoryManager.primaryObject != null)
+        {
+            primaryObjectTag = inventoryManager.primaryObject.tag;
+        }
+
+        if (inventoryManager.secondaryObject != null)
+        {
+            secondaryObjectTag = inventoryManager.secondaryObject.tag;
+        }
+        Debug.Log($"Primary Filled: {isPrimaryFilled}, Secondary Filled: {isSecondaryFilled}");
     }
 }
 
@@ -70,57 +86,32 @@ public class GameManagerData
      
 }
 
-[System.Serializable]
+/*[System.Serializable]
 public class InventoryData
 {
     public bool isPrimaryFilled;
     public bool isSecondaryFilled;
 
-    public string primaryObjectName; // Name of the object in the primary slot
-    public string secondaryObjectName; // Name of the object in the secondary slot
-
-    public float[] primaryObjectPos;
-    public float[] primaryObjectRot;
-
-    public float[] secondaryObjectPos;
-    public float[] secondaryObjectRot;
+    public string primaryObjectTag; // Name of the object in the primary slot
+    public string secondaryObjectTag; // Name of the object in the secondary slot
 
     public InventoryData(InventoryManager inventoryManager)
     {
         isPrimaryFilled = inventoryManager.isPrimaryFilled;
         isSecondaryFilled = inventoryManager.isSecondaryFilled;
 
-        if (inventoryManager.primaryObject != null)
+        if (inventoryManager.isPrimaryFilled)
         {
-            primaryObjectName = inventoryManager.primaryObject.name.Replace("(Clone)", "").Trim(); // Store the object's name, removing the "(Clone)" suffix Unity adds
-            primaryObjectPos = new float[3];
-            primaryObjectPos[0] = inventoryManager.primaryObject.transform.position.x;
-            primaryObjectPos[1] = inventoryManager.primaryObject.transform.position.y;
-            primaryObjectPos[2] = inventoryManager.primaryObject.transform.position.z;
-
-            primaryObjectRot = new float[4];
-            primaryObjectRot[0] = inventoryManager.primaryObject.transform.rotation.x;
-            primaryObjectRot[1] = inventoryManager.primaryObject.transform.rotation.y;
-            primaryObjectRot[2] = inventoryManager.primaryObject.transform.rotation.z;
-            primaryObjectRot[3] = inventoryManager.primaryObject.transform.rotation.w;
+            primaryObjectTag = inventoryManager.primaryObject.tag;
         }
-
-        if (inventoryManager.secondaryObject != null)
+        
+        if (inventoryManager.isSecondaryFilled)
         {
-            secondaryObjectName = inventoryManager.secondaryObject.name.Replace("(Clone)", "").Trim(); // Store the object's name, removing the "(Clone)" suffix
-            secondaryObjectPos = new float[3];
-            secondaryObjectPos[0] = inventoryManager.secondaryObject.transform.position.x;
-            secondaryObjectPos[1] = inventoryManager.secondaryObject.transform.position.y;
-            secondaryObjectPos[2] = inventoryManager.secondaryObject.transform.position.z;
-
-            secondaryObjectRot = new float[4];
-            secondaryObjectRot[0] = inventoryManager.secondaryObject.transform.rotation.x;
-            secondaryObjectRot[1] = inventoryManager.secondaryObject.transform.rotation.y;
-            secondaryObjectRot[2] = inventoryManager.secondaryObject.transform.rotation.z;
-            secondaryObjectRot[3] = inventoryManager.secondaryObject.transform.rotation.w;
+            secondaryObjectTag = inventoryManager.secondaryObject.tag;
         }
+        
     }
-}
+}*/
 
 [System.Serializable]
 public class NPCData

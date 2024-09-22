@@ -10,14 +10,15 @@ public class InventoryManager : MonoBehaviour
     public GameObject primaryObject; // Item in primary slot
     public GameObject secondaryObject; // Item in secondary slot
 
-    public bool isPrimaryFilled = false;
-    public bool isSecondaryFilled = false;
+    public bool isPrimaryFilled;
+    public bool isSecondaryFilled;
 
     private PlayerController pc; // Reference to PlayerController
 
+    
     public void Start()
     {
-        pc = FindObjectOfType<PlayerController>();
+        pc = GameManager.Instance.PlayerInstance.GetComponent<PlayerController>();
     }
 
     // Update is called once per frame
@@ -31,6 +32,11 @@ public class InventoryManager : MonoBehaviour
 
     public void EquipItem(GameObject weaponPrefab)
     {
+        if (weaponPrefab == null)
+        {
+            Debug.LogError("Weapon prefab is null.");
+            return; // Exit if the weapon prefab is null
+        }
         if (!isPrimaryFilled)
         {
             // Equip item into primary slot
@@ -117,62 +123,6 @@ public class InventoryManager : MonoBehaviour
             pc.canShoot = false;
             pc.canMelee = false;
         }
-    }
-
-    public void SaveInventory()
-    {
-        SaveSystem.SaveInventory(this);
-    }
-
-    public void LoadInventory()
-    {
-        InventoryData data = SaveSystem.LoadInventory();
-
-        isPrimaryFilled = data.isPrimaryFilled;
-        isSecondaryFilled = data.isSecondaryFilled;
-
-        // Destroy current objects in slots before loading new ones
-        if (primaryObject != null)
-        {
-            Destroy(primaryObject);
-        }
-        if (secondaryObject != null)
-        {
-            Destroy(secondaryObject);
-        }
-
-        // Load and instantiate the saved primary object
-        if (isPrimaryFilled)
-        {
-            GameObject primaryPrefab = Resources.Load<GameObject>(data.primaryObjectName);
-            if (primaryPrefab != null)
-            {
-                primaryObject = Instantiate(primaryPrefab, primarySlot.position, primarySlot.rotation, primarySlot);
-
-                // Set position and rotation for the primary object
-                primaryObject.transform.position = new Vector3(data.primaryObjectPos[0], data.primaryObjectPos[1], data.primaryObjectPos[2]);
-                primaryObject.transform.rotation = new Quaternion(data.primaryObjectRot[0], data.primaryObjectRot[1], data.primaryObjectRot[2], data.primaryObjectRot[3]);
-
-                // Update the PlayerController based on the primary object
-                UpdatePlayerController(primaryObject);
-            }
-        }
-
-        // Load and instantiate the saved secondary object
-        if (isSecondaryFilled)
-        {
-            GameObject secondaryPrefab = Resources.Load<GameObject>(data.secondaryObjectName);
-            if (secondaryPrefab != null)
-            {
-                secondaryObject = Instantiate(secondaryPrefab, secondarySlot.position, secondarySlot.rotation, secondarySlot);
-
-                // Set position and rotation for the secondary object
-                secondaryObject.transform.position = new Vector3(data.secondaryObjectPos[0], data.secondaryObjectPos[1], data.secondaryObjectPos[2]);
-                secondaryObject.transform.rotation = new Quaternion(data.secondaryObjectRot[0], data.secondaryObjectRot[1], data.secondaryObjectRot[2], data.secondaryObjectRot[3]);
-            }
-        }
-
-        Debug.Log("Inventory loaded successfully.");
     }
 
 }

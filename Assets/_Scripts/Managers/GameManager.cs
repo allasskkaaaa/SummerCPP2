@@ -80,6 +80,11 @@ public class GameManager : MonoBehaviour
     public void SpawnPlayer(Transform spawnLocation)
     {
         _playerinstance = Instantiate(playerPrefab, spawnLocation.position, spawnLocation.rotation);
+
+        if (loadGameData)
+        {
+            _playerinstance.LoadPlayer();
+        }
     }
 
     public void UpdateCheckpoint(Transform updatedCheckpoint)
@@ -173,6 +178,8 @@ public class GameManager : MonoBehaviour
         SpawnPlayer(currentCheckpoint); // Respawn player
         //inventorymanager.LoadInventory();
     }
+
+ 
 
     public void SaveGameManager()
     {

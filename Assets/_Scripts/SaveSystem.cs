@@ -5,12 +5,12 @@ using System.Collections.Generic;
 
 public static class SaveSystem
 {
-    public static void SavePlayer(PlayerController player, HealthManager healthManager)
+    public static void SavePlayer(PlayerController player, HealthManager healthManager, InventoryManager inventoryManager)
     {
         BinaryFormatter formatter = new BinaryFormatter();
         string path = Application.persistentDataPath + "/player.gbr";
         FileStream stream = new FileStream(path, FileMode.Create);
-        PlayerData data = new PlayerData(player, healthManager);
+        PlayerData data = new PlayerData(player, healthManager, inventoryManager);
 
         formatter.Serialize(stream, data);
         stream.Close();
@@ -101,7 +101,7 @@ public static class SaveSystem
         }
     }
 
-    public static void SaveInventory(InventoryManager inventoryManager)
+    /*public static void SaveInventory(InventoryManager inventoryManager)
     {
         BinaryFormatter formatter = new BinaryFormatter();
         string path = Application.persistentDataPath + "/inventory.gbr";
@@ -131,7 +131,7 @@ public static class SaveSystem
             Debug.LogError("Inventory save file not found in " + path);
             return null;
         }
-    }
+    }*/
 
     public static void SaveNPCList(List<GameObject> npcList)
     {

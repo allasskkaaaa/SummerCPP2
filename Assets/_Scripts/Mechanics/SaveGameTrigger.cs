@@ -13,7 +13,7 @@ public class SaveGameTrigger : MonoBehaviour
             GameManager.Instance.SaveGameManager();
             GameManager.Instance.SaveNPCs();
             other.gameObject.GetComponent<PlayerController>().SavePlayer();
-            other.gameObject.GetComponent<InventoryManager>().SaveInventory(); 
+            //other.gameObject.GetComponent<InventoryManager>().SaveInventory(); 
         }
     }
 }

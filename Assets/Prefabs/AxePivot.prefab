@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7458352762267209771}
   m_Layer: 0
   m_Name: AxePivot
-  m_TagString: Untagged
+  m_TagString: Axe
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

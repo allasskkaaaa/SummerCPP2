@@ -3954,7 +3954,6 @@ Transform:
   - {fileID: 1082675017}
   - {fileID: 949072014}
   - {fileID: 1678112133}
-  - {fileID: 346578411}
   - {fileID: 726132223}
   - {fileID: 1535778461}
   m_Father: {fileID: 1890174999}
@@ -11310,6 +11309,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CavernBoulder_01_Low (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 8247180411267431805, guid: 5bf76cd6c95000543bf1a4cde053a7de, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 8734747213618997191, guid: 5bf76cd6c95000543bf1a4cde053a7de, type: 3}
       propertyPath: m_LocalScale.x
       value: 7.9693847
@@ -11857,6 +11860,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CavernBoulder_01_Low (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 8247180411267431805, guid: 5bf76cd6c95000543bf1a4cde053a7de, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 8734747213618997191, guid: 5bf76cd6c95000543bf1a4cde053a7de, type: 3}
       propertyPath: m_LocalScale.x
       value: 7.9693847
@@ -11948,37 +11955,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 5.572055, y: 3.617432, z: 0.2480626}
   m_Center: {x: -0.018439895, y: 1.7987723, z: 0.0021973464}
---- !u!1 &346578410
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 346578411}
-  m_Layer: 0
-  m_Name: EnemySpawn (6)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &346578411
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 346578410}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 20.89, y: -0.8699999, z: 4.26}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 120584671}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &347447902
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18863,6 +18839,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CavernBoulder_01_Low (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 8247180411267431805, guid: 5bf76cd6c95000543bf1a4cde053a7de, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 8734747213618997191, guid: 5bf76cd6c95000543bf1a4cde053a7de, type: 3}
       propertyPath: m_LocalScale.x
       value: 7.9693847
@@ -21141,6 +21121,10 @@ PrefabInstance:
     - target: {fileID: 8247180411267431805, guid: 5bf76cd6c95000543bf1a4cde053a7de, type: 3}
       propertyPath: m_Name
       value: CavernBoulder_01_Low (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8247180411267431805, guid: 5bf76cd6c95000543bf1a4cde053a7de, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 8734747213618997191, guid: 5bf76cd6c95000543bf1a4cde053a7de, type: 3}
       propertyPath: m_LocalScale.x
@@ -34445,6 +34429,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CavernBoulder_01_Low (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 8247180411267431805, guid: 5bf76cd6c95000543bf1a4cde053a7de, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 8734747213618997191, guid: 5bf76cd6c95000543bf1a4cde053a7de, type: 3}
       propertyPath: m_LocalScale.x
       value: 7.9693847
@@ -43170,6 +43158,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CavernBoulder_01_Low (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 8247180411267431805, guid: 5bf76cd6c95000543bf1a4cde053a7de, type: 3}
+      propertyPath: m_TagString
+      value: Wall
+      objectReference: {fileID: 0}
     - target: {fileID: 8734747213618997191, guid: 5bf76cd6c95000543bf1a4cde053a7de, type: 3}
       propertyPath: m_LocalScale.x
       value: 7.9693847
@@ -44132,6 +44124,10 @@ PrefabInstance:
     - target: {fileID: 8247180411267431805, guid: 5bf76cd6c95000543bf1a4cde053a7de, type: 3}
       propertyPath: m_Name
       value: CavernBoulder_01_Low (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8247180411267431805, guid: 5bf76cd6c95000543bf1a4cde053a7de, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 8734747213618997191, guid: 5bf76cd6c95000543bf1a4cde053a7de, type: 3}
       propertyPath: m_LocalScale.x
@@ -46994,7 +46990,6 @@ MonoBehaviour:
   scoreObjects:
   - {fileID: 4013491133817090484, guid: ffa7461b0b39dd54889eeb733e246844, type: 3}
   EnemySpawnPoints:
-  - {fileID: 346578411}
   - {fileID: 726132223}
   - {fileID: 1535778461}
   EnemyObjects:
@@ -47927,6 +47922,10 @@ PrefabInstance:
     - target: {fileID: 8247180411267431805, guid: 5bf76cd6c95000543bf1a4cde053a7de, type: 3}
       propertyPath: m_Name
       value: CavernBoulder_01_Low (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8247180411267431805, guid: 5bf76cd6c95000543bf1a4cde053a7de, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 8734747213618997191, guid: 5bf76cd6c95000543bf1a4cde053a7de, type: 3}
       propertyPath: m_LocalScale.x
@@ -55457,6 +55456,10 @@ PrefabInstance:
     - target: {fileID: 8247180411267431805, guid: 5bf76cd6c95000543bf1a4cde053a7de, type: 3}
       propertyPath: m_Name
       value: CavernBoulder_01_Low
+      objectReference: {fileID: 0}
+    - target: {fileID: 8247180411267431805, guid: 5bf76cd6c95000543bf1a4cde053a7de, type: 3}
+      propertyPath: m_TagString
+      value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 8734747213618997191, guid: 5bf76cd6c95000543bf1a4cde053a7de, type: 3}
       propertyPath: m_LocalScale.x

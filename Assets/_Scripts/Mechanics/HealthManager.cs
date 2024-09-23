@@ -69,6 +69,7 @@ public class HealthManager : MonoBehaviour
         {
             if (gameObject.CompareTag("Player"))
             {
+                GameManager.Instance.score -= 100;
                 lives--;
                 if (lives <= 0)
                 {
@@ -80,7 +81,11 @@ public class HealthManager : MonoBehaviour
                     respawn();
                 }
             }
-            if (gameObject.CompareTag("Enemy") || gameObject.CompareTag("NPC"))
+            if (gameObject.CompareTag("Enemy"))
+            {
+                GameManager.Instance.score += 100;
+                Destroy(gameObject);
+            } else if (gameObject.CompareTag("NPC"))
             {
                 Destroy(gameObject);
             }

@@ -1058,6 +1058,7 @@ MonoBehaviour:
   rotationSpeed: 0.4
   canShoot: 0
   canMelee: 0
+  axeSFX: {fileID: 8300000, guid: b1705b6459534804a99001bbab2a688e, type: 3}
   axe: {fileID: 2479465848097067357, guid: 509c791ac5de307439640047a4720a68, type: 3}
   gun: {fileID: 7375696825277333005, guid: e75c88a60dbdcf84a8071ed8617f450d, type: 3}
   healthManager: {fileID: 8991051142879621933}
@@ -1190,7 +1191,8 @@ MonoBehaviour:
   shootSpawn: {fileID: 1022599372527433350}
   projectile: {fileID: 4601070124481090642, guid: aeb94d6ef6052ed4591a08f7b9d558c5, type: 3}
   shooter: {fileID: 9023572153099319514}
-  SFX: {fileID: 8300000, guid: 52ad29c991c8e22468fab8c42f90e278, type: 3}
+  GunSFX: {fileID: 8300000, guid: 52ad29c991c8e22468fab8c42f90e278, type: 3}
+  AxeSFX: {fileID: 8300000, guid: b1705b6459534804a99001bbab2a688e, type: 3}
 --- !u!114 &8991051142879621933
 MonoBehaviour:
   m_ObjectHideFlags: 0

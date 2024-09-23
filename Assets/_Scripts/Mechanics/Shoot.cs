@@ -7,7 +7,8 @@ public class Shoot : MonoBehaviour
     public Transform shootSpawn;
     public GameObject projectile;
     public GameObject shooter;
-    public AudioClip SFX;
+    public AudioClip GunSFX;
+    public AudioClip AxeSFX;
 
     PlayerController pc;
     Animator anim;
@@ -35,9 +36,16 @@ public class Shoot : MonoBehaviour
                 if (pc.canShoot) 
                     anim.SetTrigger("shoot");
                 if (pc.canMelee)
+                {
                     anim.SetTrigger("shoot");
-            }
+                }                
 
+            }
+    }
+
+    private void axeSFX()
+    {
+        soundManager.playSFX(AxeSFX);
     }
 
     public void SpawnProjectile()
@@ -47,7 +55,7 @@ public class Shoot : MonoBehaviour
             GameObject projectileInstance = Instantiate(projectile, shootSpawn.position, shootSpawn.rotation);
             Projectile projectileScript = projectileInstance.GetComponent<Projectile>();
             projectileScript.shooter = this.gameObject; // Assign the shooter
-            soundManager.playSFX(SFX);
+            soundManager.playSFX(GunSFX);
         }
     }
 }

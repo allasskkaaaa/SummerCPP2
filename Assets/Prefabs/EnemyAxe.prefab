@@ -6017,6 +6017,7 @@ MonoBehaviour:
   followSpeed: 4
   stoppingDistance: 2
   radius: {fileID: 0}
+  AxeSFX: {fileID: 0}
 --- !u!1 &7289751613847760129
 GameObject:
   m_ObjectHideFlags: 0
@@ -6094,7 +6095,8 @@ MonoBehaviour:
   attackSpeed: 5
   followSpeed: 4
   stoppingDistance: 2
-  radius: {fileID: 0}
+  radius: {fileID: 6120079836574742836}
+  AxeSFX: {fileID: 8300000, guid: b1705b6459534804a99001bbab2a688e, type: 3}
 --- !u!54 &-1266310238012145316
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -6642,6 +6644,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d10f2550ee630734598a09c9c6c93379, type: 3}
+--- !u!135 &6120079836574742836 stripped
+SphereCollider:
+  m_CorrespondingSourceObject: {fileID: 8320127044000466395, guid: d10f2550ee630734598a09c9c6c93379, type: 3}
+  m_PrefabInstance: {fileID: 2853561812452228335}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6852014433997796167 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8687124322488946600, guid: d10f2550ee630734598a09c9c6c93379, type: 3}

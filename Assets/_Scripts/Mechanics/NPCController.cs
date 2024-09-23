@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.IMGUI.Controls.PrimitiveBoundsHandle;
 
 public class NPCController : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class NPCController : MonoBehaviour
     [SerializeField] public float stoppingDistance = 2f;
     [SerializeField] public float catchUpSpeed = 8f;
     [SerializeField] public float catchUpDistance = 12f;
+
+    public AudioClip AxeSFX;
     private bool isOccupied = false;
     private Vector3 lastPosition;
 
@@ -19,6 +22,7 @@ public class NPCController : MonoBehaviour
     [SerializeField] private Transform target;
     Animator anim;
     HealthManager healthManager;
+    SoundManager soundManager;
 
     private void Start()
     {
@@ -33,6 +37,7 @@ public class NPCController : MonoBehaviour
 
         anim = GetComponent<Animator>();
         healthManager = GetComponent<HealthManager>();
+        soundManager = FindAnyObjectByType<SoundManager>();
     }
 
     private void Update()
@@ -117,6 +122,12 @@ public class NPCController : MonoBehaviour
         anim.SetTrigger("attack"); // Trigger the attack animation
         // You can add other attack logic here, such as damage dealing or cooldown
     }*/
+
+
+    private void axeSFX()
+    {
+        soundManager.playSFX(AxeSFX);
+    }
 
     private void AttackEnemy()
     {

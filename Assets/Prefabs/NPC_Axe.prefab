@@ -1301,6 +1301,7 @@ MonoBehaviour:
   stoppingDistance: 2
   catchUpSpeed: 9
   catchUpDistance: 8
+  AxeSFX: {fileID: 8300000, guid: b1705b6459534804a99001bbab2a688e, type: 3}
   player: {fileID: 0}
   target: {fileID: 0}
 --- !u!136 &2239282924114148499

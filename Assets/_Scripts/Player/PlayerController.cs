@@ -14,8 +14,11 @@ public class PlayerController : MonoBehaviour
     public bool canShoot = false;
     public bool canMelee = false;
 
+    SoundManager soundManager;
+    public AudioClip axeSFX;
     public GameObject axe;
     public GameObject gun;
+
     Animator anim;
     CharacterController characterController;
     public HealthManager healthManager;
@@ -34,6 +37,7 @@ public class PlayerController : MonoBehaviour
         characterController = this.GetComponent<CharacterController>();
         healthManager = this.GetComponent<HealthManager>();
         inventoryManager = this.GetComponent<InventoryManager>();
+        SoundManager soundManager = FindAnyObjectByType<SoundManager>();
 
         if (GameManager.Instance.loadGameData == true)
         {

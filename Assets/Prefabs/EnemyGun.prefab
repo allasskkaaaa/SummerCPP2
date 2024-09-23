@@ -863,10 +863,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3afcd8e92d5dfde469b6fe3733e0cfb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackSpeed: 3
+  attackSpeed: 1
   followSpeed: 0
   stoppingDistance: 0
   radius: {fileID: 0}
+  AxeSFX: {fileID: 8300000, guid: b1705b6459534804a99001bbab2a688e, type: 3}
 --- !u!136 &6844126171771898028
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -905,7 +906,8 @@ MonoBehaviour:
   shootSpawn: {fileID: 1350146247535978967}
   projectile: {fileID: 4601070124481090642, guid: 2788941d4f0accb4e8e139fa94a5ef64, type: 3}
   shooter: {fileID: 4361486057515876038}
-  SFX: {fileID: 8300000, guid: 52ad29c991c8e22468fab8c42f90e278, type: 3}
+  GunSFX: {fileID: 8300000, guid: 52ad29c991c8e22468fab8c42f90e278, type: 3}
+  AxeSFX: {fileID: 8300000, guid: b1705b6459534804a99001bbab2a688e, type: 3}
 --- !u!114 &8551113336028127316
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6575,6 +6577,7 @@ MonoBehaviour:
   followSpeed: 4
   stoppingDistance: 2
   radius: {fileID: 0}
+  AxeSFX: {fileID: 0}
 --- !u!1 &7421452588543941959
 GameObject:
   m_ObjectHideFlags: 0

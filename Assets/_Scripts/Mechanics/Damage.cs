@@ -23,11 +23,12 @@ public class Damage : MonoBehaviour
 
         if (target.CompareTag("NPC") || target.CompareTag("Player") || target.CompareTag("Enemy"))
         {
-            HealthManager healthManager = target.GetComponent<HealthManager>();
+             HealthManager healthManager = target.GetComponent<HealthManager>();
 
             if (healthManager == null)
             {
                 Debug.Log("Object doesn't have a health manager.");
+                return;
             }
             else
             {

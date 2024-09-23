@@ -52,9 +52,9 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void LoadScene(string SceneName)
+    public void LoadScene(int SceneNum)
     {
-        SceneManager.LoadScene(SceneName);
+        SceneManager.LoadScene(SceneNum);
     }
 
     public void LoadGameDataOnStart()
@@ -124,6 +124,14 @@ public class GameManager : MonoBehaviour
         SaveSystem.SaveNPCList(NPCList);
     }
 
+    public void LoadSave()
+    {
+        Time.timeScale = 1;
+        loadGameData = true;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); // Reload the current scene
+    }
+
+
     public void LoadNPCs()
     {
         string path = Application.persistentDataPath + "/npcList.gbr";
@@ -177,9 +185,10 @@ public class GameManager : MonoBehaviour
         LoadNPCs(); // Load NPCs
         SpawnPlayer(currentCheckpoint); // Respawn player
         //inventorymanager.LoadInventory();
+        loadGameData = false;
+        Debug.Log("Game Data Loaded");
     }
 
- 
 
     public void SaveGameManager()
     {

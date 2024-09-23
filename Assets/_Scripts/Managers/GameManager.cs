@@ -70,6 +70,7 @@ public class GameManager : MonoBehaviour
 
     public void Respawn()
     {
+        PlayerInstance.ResumeMovement();
         if (_playerinstance != null && currentCheckpoint != null)
         {
             _playerinstance.transform.position = currentCheckpoint.position;

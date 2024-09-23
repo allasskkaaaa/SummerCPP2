@@ -112,10 +112,22 @@ public class NPCController : MonoBehaviour
         }
     }
 
+    /*private void AttackEnemy()
+    {
+        anim.SetTrigger("attack"); // Trigger the attack animation
+        // You can add other attack logic here, such as damage dealing or cooldown
+    }*/
+
     private void AttackEnemy()
     {
-        anim.SetBool("attack", true); // Trigger the attack animation
-        // You can add other attack logic here, such as damage dealing or cooldown
+        anim.SetTrigger("attack"); // Trigger the attack animation
+        StartCoroutine(ResetAttackState()); // Start coroutine to reset the attack state after some time
+    }
+
+    private IEnumerator ResetAttackState()
+    {
+        yield return new WaitForSeconds(attackSpeed); // Wait for the duration of the attack
+        isOccupied = false; // Reset the occupied state after attack
     }
 
     private void UpdateAnimator()
@@ -129,6 +141,7 @@ public class NPCController : MonoBehaviour
         // Update the last position for the next frame
         lastPosition = transform.position;
     }
+
 
 
 }

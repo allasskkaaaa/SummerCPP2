@@ -45,9 +45,9 @@ public class EnemyController : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        anim.SetBool("attack", false);
+        /*anim.SetBool("attack", false);
         isAttacking = false; // Reset the attacking state when target leaves
-        Debug.Log(other.name + " has left attacking radius.");
+        Debug.Log(other.name + " has left attacking radius.");*/
     }
 
     void attack()

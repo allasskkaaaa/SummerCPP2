@@ -15,6 +15,7 @@ public class HealthManager : MonoBehaviour
 
     [SerializeField] private TMP_Text healthText;
     
+    
     SoundManager soundManager;
     Animator anim;
     private void Start()
@@ -71,17 +72,14 @@ public class HealthManager : MonoBehaviour
                 lives--;
                 if (lives <= 0)
                 {
-                    DeathAnimation();
+                    DeathAnimation();                 
 
                 }
                 else
                 {
                     respawn();
                 }
-            } else
-            {
-                deleteObject();
-            }
+            } 
             
         }
 
@@ -109,9 +107,9 @@ public class HealthManager : MonoBehaviour
         anim.SetTrigger("death");
     }
 
-    public void deleteObject()
+    public void GameOver()
     {
-        Destroy(gameObject);
+        GameManager.Instance.LoadScene(3);
     }
 
    public void respawn()

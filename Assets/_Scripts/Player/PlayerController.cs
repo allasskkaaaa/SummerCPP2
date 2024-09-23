@@ -21,6 +21,8 @@ public class PlayerController : MonoBehaviour
     public HealthManager healthManager;
     public InventoryManager inventoryManager;
 
+    private bool isMovementPaused = false;
+
     public void OnMove(InputAction.CallbackContext context)
     {
         move = context.ReadValue<Vector2>();
@@ -60,13 +62,15 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
+        
         movePlayer();
         UpdateAnimator();
-        
     }
 
     public void movePlayer()
     {
+        if (isMovementPaused) return;
+
         Vector3 movement = new Vector3(move.x, 0f, move.y);
         
         if (movement.magnitude > 0.1f)
@@ -92,6 +96,17 @@ public class PlayerController : MonoBehaviour
         speed = newSpeed;
         yield return new WaitForSeconds(length);
         speed = originalSpeed;
+    }
+
+    public void PauseMovement()
+    {
+        isMovementPaused = true;
+        anim.SetFloat("speed", 0);
+    }
+
+    public void ResumeMovement()
+    {
+        isMovementPaused = false;
     }
 
     public void SavePlayer()

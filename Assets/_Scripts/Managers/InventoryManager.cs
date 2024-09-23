@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Progress;
 
 public class InventoryManager : MonoBehaviour
 {
@@ -18,16 +19,25 @@ public class InventoryManager : MonoBehaviour
     
     public void Start()
     {
-        pc = GameManager.Instance.PlayerInstance.GetComponent<PlayerController>();
+        pc = this.GetComponent<PlayerController>();
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (pc == null)
+        {
+            pc = this.GetComponent<PlayerController>();
+        }
+
         if (Input.GetKeyDown(KeyCode.Tab))
         {
             SwapSlots();
         }
+
+        if (primaryObject != null )
+            UpdatePlayerController(primaryObject);
     }
 
     public void EquipItem(GameObject weaponPrefab)
@@ -37,6 +47,7 @@ public class InventoryManager : MonoBehaviour
             Debug.LogError("Weapon prefab is null.");
             return; // Exit if the weapon prefab is null
         }
+
         if (!isPrimaryFilled)
         {
             // Equip item into primary slot
@@ -44,7 +55,7 @@ public class InventoryManager : MonoBehaviour
             primaryObject = itemInstance;
             isPrimaryFilled = true;
 
-            UpdatePlayerController(primaryObject);
+            //UpdatePlayerController(primaryObject);
 
             Debug.Log("Item equipped in primary slot");
         }
@@ -61,6 +72,7 @@ public class InventoryManager : MonoBehaviour
         {
             Debug.Log("Both slots are filled. Cannot equip more items.");
         }
+        
     }
 
     void SwapSlots()
@@ -98,7 +110,7 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
-    private void UpdatePlayerController(GameObject item)
+    public void UpdatePlayerController(GameObject item)
     {
         if (item != null)
         {
@@ -122,7 +134,7 @@ public class InventoryManager : MonoBehaviour
         {
             pc.canShoot = false;
             pc.canMelee = false;
+
         }
     }
-
 }

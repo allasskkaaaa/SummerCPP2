@@ -19797,8 +19797,8 @@ MonoBehaviour:
   NPCList: []
   loadGameData: 0
   playerPrefab: {fileID: 9071291066955798496, guid: bc2f0dced5498fc4d96d2ecd262c0990, type: 3}
-  currentCheckpoint: {fileID: 0}
-  inventorymanager: {fileID: 0}
+  currentCheckpoint: {fileID: 1110082224}
+  inventorymanager: {fileID: 4904947760964322031, guid: bc2f0dced5498fc4d96d2ecd262c0990, type: 3}
 --- !u!4 &631422068
 Transform:
   m_ObjectHideFlags: 0

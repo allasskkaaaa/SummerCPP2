@@ -140,12 +140,16 @@ public class PlayerController : MonoBehaviour
         {
             if (data.primaryObjectTag == "Axe")
             {
+                inventoryManager.isPrimaryFilled = false;
                 inventoryManager.EquipItem(axe); // Use EquipItem to instantiate and equip the axe
+                
                 Debug.Log("Loaded primary slot to Axe");
             }
             else if (data.primaryObjectTag == "Gun")
             {
+                inventoryManager.isPrimaryFilled = false;
                 inventoryManager.EquipItem(gun); // Use EquipItem to instantiate and equip the gun
+               
                 Debug.Log("Loaded primary slot to Gun");
             }
             else
@@ -163,11 +167,14 @@ public class PlayerController : MonoBehaviour
         {
             if (data.secondaryObjectTag == axe.tag)
             {
+                inventoryManager.isSecondaryFilled = false;
                 inventoryManager.EquipItem(axe); // Use EquipItem to instantiate and equip the axe in the secondary slot
+                
                 Debug.Log("Loaded secondary slot to Axe");
             }
             else if (data.secondaryObjectTag == gun.tag)
             {
+                inventoryManager.isSecondaryFilled = false;
                 inventoryManager.EquipItem(gun); // Use EquipItem to instantiate and equip the gun in the secondary slot
                 Debug.Log("Loaded secondary slot to Axe");
             }

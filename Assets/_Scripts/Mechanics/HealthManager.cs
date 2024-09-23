@@ -79,8 +79,11 @@ public class HealthManager : MonoBehaviour
                 {
                     respawn();
                 }
-            } 
-            Destroy(gameObject);
+            }
+            if (gameObject.CompareTag("Enemy") || gameObject.CompareTag("NPC"))
+            {
+                Destroy(gameObject);
+            }
         }
 
 

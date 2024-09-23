@@ -7,7 +7,7 @@ public class Damage : MonoBehaviour
     [SerializeField] private int damage = 5;
     [SerializeField] private List<GameObject> ignore; // Specify the user to avoid them
 
-    private void OnTriggerEnter(Collider hit)
+    private void OnTriggerExit(Collider hit)
     {
         GameObject target = hit.gameObject;
 

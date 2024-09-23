@@ -10,12 +10,16 @@ public class Checkpoint : MonoBehaviour
     [SerializeField] public Transform checkPointPos;
     [SerializeField] public bool checkPointCaptured = false;
     [SerializeField] private ParticleSystem captureVFX;
+    public AudioClip SFX;
 
     HealthManager healthManager;
-    
+    SoundManager soundManager;
     
     private void OnTriggerEnter(Collider other)
     {
+        soundManager = FindObjectOfType<SoundManager>();
+        soundManager.playSFX(SFX);
+
         if ( other.CompareTag("Player"))
         {
             if (!checkPointCaptured)

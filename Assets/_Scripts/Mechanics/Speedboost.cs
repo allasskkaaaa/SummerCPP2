@@ -9,6 +9,15 @@ public class Speedboost : MonoBehaviour
     private bool activated = false;
     PlayerController pc;
 
+    public AudioClip SFX;
+
+    SoundManager soundManager;
+
+    private void Start()
+    {
+        soundManager = FindAnyObjectByType<SoundManager>();
+    }
+
     public void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -19,6 +28,7 @@ public class Speedboost : MonoBehaviour
                 pc = other.GetComponent<PlayerController>();
 
                 StartCoroutine(pc.Speedboost(speedChange, changeLength));
+                soundManager.playSFX(SFX);
             }
             
         }

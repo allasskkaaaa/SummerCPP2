@@ -6876,6 +6876,7 @@ MonoBehaviour:
   maxHealth: 100
   maxLives: 0
   lives: 1
+  DamageSFX: {fileID: 8300000, guid: 643c3cab56d19664391c695e23aa888e, type: 3}
   healthText: {fileID: 0}
 --- !u!1 &7416882356773457498
 GameObject:

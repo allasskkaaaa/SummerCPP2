@@ -925,6 +925,7 @@ MonoBehaviour:
   shootSpawn: {fileID: 1350146247535978967}
   projectile: {fileID: 4601070124481090642, guid: 2788941d4f0accb4e8e139fa94a5ef64, type: 3}
   shooter: {fileID: 4361486057515876038}
+  SFX: {fileID: 8300000, guid: 52ad29c991c8e22468fab8c42f90e278, type: 3}
 --- !u!114 &8551113336028127316
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -943,6 +944,7 @@ MonoBehaviour:
   maxHealth: 100
   maxLives: 1
   lives: 1
+  DamageSFX: {fileID: 8300000, guid: 643c3cab56d19664391c695e23aa888e, type: 3}
   healthText: {fileID: 0}
 --- !u!54 &3906224463580406831
 Rigidbody:

@@ -789,6 +789,7 @@ MonoBehaviour:
   checkPointPos: {fileID: 24264733}
   checkPointCaptured: 0
   captureVFX: {fileID: 3008228853618666769, guid: 1a2c705c13fca5147ad83ed8b0f7b4b8, type: 3}
+  SFX: {fileID: 8300000, guid: b742e56d6fbc8464ba1ebf94f02725b6, type: 3}
 --- !u!114 &24264736
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6743,6 +6744,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 268453413}
     m_Modifications:
+    - target: {fileID: 621688188805967802, guid: 9f7a22657dfd03c4fa9350fefdbbccbf, type: 3}
+      propertyPath: SFX
+      value: 
+      objectReference: {fileID: 8300000, guid: 1f09d41a1aae41a45be9f1a97909d955, type: 3}
     - target: {fileID: 4105649911905806452, guid: 9f7a22657dfd03c4fa9350fefdbbccbf, type: 3}
       propertyPath: m_LocalPosition.x
       value: -97.54001
@@ -6880,6 +6885,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 268453413}
     m_Modifications:
+    - target: {fileID: 621688188805967802, guid: 9f7a22657dfd03c4fa9350fefdbbccbf, type: 3}
+      propertyPath: SFX
+      value: 
+      objectReference: {fileID: 8300000, guid: 1f09d41a1aae41a45be9f1a97909d955, type: 3}
     - target: {fileID: 4105649911905806452, guid: 9f7a22657dfd03c4fa9350fefdbbccbf, type: 3}
       propertyPath: m_LocalPosition.x
       value: -117.58002
@@ -10065,6 +10074,7 @@ MonoBehaviour:
   checkPointPos: {fileID: 288205323}
   checkPointCaptured: 0
   captureVFX: {fileID: 3008228853618666769, guid: 1a2c705c13fca5147ad83ed8b0f7b4b8, type: 3}
+  SFX: {fileID: 8300000, guid: b742e56d6fbc8464ba1ebf94f02725b6, type: 3}
 --- !u!114 &288205326
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11457,6 +11467,10 @@ PrefabInstance:
       value: CavernBoulder_01_Low (8)
       objectReference: {fileID: 0}
     - target: {fileID: 8247180411267431805, guid: 5bf76cd6c95000543bf1a4cde053a7de, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8247180411267431805, guid: 5bf76cd6c95000543bf1a4cde053a7de, type: 3}
       propertyPath: m_TagString
       value: Wall
       objectReference: {fileID: 0}
@@ -12007,6 +12021,10 @@ PrefabInstance:
     - target: {fileID: 8247180411267431805, guid: 5bf76cd6c95000543bf1a4cde053a7de, type: 3}
       propertyPath: m_Name
       value: CavernBoulder_01_Low (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8247180411267431805, guid: 5bf76cd6c95000543bf1a4cde053a7de, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8247180411267431805, guid: 5bf76cd6c95000543bf1a4cde053a7de, type: 3}
       propertyPath: m_TagString
@@ -17525,6 +17543,7 @@ MonoBehaviour:
   checkPointPos: {fileID: 542428973}
   checkPointCaptured: 0
   captureVFX: {fileID: 3008228853618666769, guid: 1a2c705c13fca5147ad83ed8b0f7b4b8, type: 3}
+  SFX: {fileID: 8300000, guid: b742e56d6fbc8464ba1ebf94f02725b6, type: 3}
 --- !u!114 &542428976
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18986,6 +19005,10 @@ PrefabInstance:
     - target: {fileID: 8247180411267431805, guid: 5bf76cd6c95000543bf1a4cde053a7de, type: 3}
       propertyPath: m_Name
       value: CavernBoulder_01_Low (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8247180411267431805, guid: 5bf76cd6c95000543bf1a4cde053a7de, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8247180411267431805, guid: 5bf76cd6c95000543bf1a4cde053a7de, type: 3}
       propertyPath: m_TagString
@@ -21271,6 +21294,10 @@ PrefabInstance:
       value: CavernBoulder_01_Low (5)
       objectReference: {fileID: 0}
     - target: {fileID: 8247180411267431805, guid: 5bf76cd6c95000543bf1a4cde053a7de, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8247180411267431805, guid: 5bf76cd6c95000543bf1a4cde053a7de, type: 3}
       propertyPath: m_TagString
       value: Wall
       objectReference: {fileID: 0}
@@ -22397,6 +22424,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 268453413}
     m_Modifications:
+    - target: {fileID: 621688188805967802, guid: 9f7a22657dfd03c4fa9350fefdbbccbf, type: 3}
+      propertyPath: SFX
+      value: 
+      objectReference: {fileID: 8300000, guid: 1f09d41a1aae41a45be9f1a97909d955, type: 3}
     - target: {fileID: 4105649911905806452, guid: 9f7a22657dfd03c4fa9350fefdbbccbf, type: 3}
       propertyPath: m_LocalPosition.x
       value: 63.660004
@@ -23164,6 +23195,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 268453413}
     m_Modifications:
+    - target: {fileID: 621688188805967802, guid: 9f7a22657dfd03c4fa9350fefdbbccbf, type: 3}
+      propertyPath: SFX
+      value: 
+      objectReference: {fileID: 8300000, guid: 1f09d41a1aae41a45be9f1a97909d955, type: 3}
     - target: {fileID: 4105649911905806452, guid: 9f7a22657dfd03c4fa9350fefdbbccbf, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -27475,6 +27510,7 @@ MonoBehaviour:
   checkPointPos: {fileID: 867507175}
   checkPointCaptured: 0
   captureVFX: {fileID: 3008228853618666769, guid: 1a2c705c13fca5147ad83ed8b0f7b4b8, type: 3}
+  SFX: {fileID: 8300000, guid: b742e56d6fbc8464ba1ebf94f02725b6, type: 3}
 --- !u!114 &867507178
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33445,6 +33481,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 268453413}
     m_Modifications:
+    - target: {fileID: 621688188805967802, guid: 9f7a22657dfd03c4fa9350fefdbbccbf, type: 3}
+      propertyPath: SFX
+      value: 
+      objectReference: {fileID: 8300000, guid: 1f09d41a1aae41a45be9f1a97909d955, type: 3}
     - target: {fileID: 4105649911905806452, guid: 9f7a22657dfd03c4fa9350fefdbbccbf, type: 3}
       propertyPath: m_LocalPosition.x
       value: -6.6500244
@@ -34579,6 +34619,10 @@ PrefabInstance:
     - target: {fileID: 8247180411267431805, guid: 5bf76cd6c95000543bf1a4cde053a7de, type: 3}
       propertyPath: m_Name
       value: CavernBoulder_01_Low (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8247180411267431805, guid: 5bf76cd6c95000543bf1a4cde053a7de, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8247180411267431805, guid: 5bf76cd6c95000543bf1a4cde053a7de, type: 3}
       propertyPath: m_TagString
@@ -35724,6 +35768,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 268453413}
     m_Modifications:
+    - target: {fileID: 621688188805967802, guid: 9f7a22657dfd03c4fa9350fefdbbccbf, type: 3}
+      propertyPath: SFX
+      value: 
+      objectReference: {fileID: 8300000, guid: 1f09d41a1aae41a45be9f1a97909d955, type: 3}
     - target: {fileID: 4105649911905806452, guid: 9f7a22657dfd03c4fa9350fefdbbccbf, type: 3}
       propertyPath: m_LocalPosition.x
       value: 29.129974
@@ -40868,6 +40916,7 @@ MonoBehaviour:
   checkPointPos: {fileID: 1337234913}
   checkPointCaptured: 0
   captureVFX: {fileID: 3008228853618666769, guid: 1a2c705c13fca5147ad83ed8b0f7b4b8, type: 3}
+  SFX: {fileID: 8300000, guid: b742e56d6fbc8464ba1ebf94f02725b6, type: 3}
 --- !u!114 &1337234916
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -43310,6 +43359,10 @@ PrefabInstance:
       value: CavernBoulder_01_Low (4)
       objectReference: {fileID: 0}
     - target: {fileID: 8247180411267431805, guid: 5bf76cd6c95000543bf1a4cde053a7de, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8247180411267431805, guid: 5bf76cd6c95000543bf1a4cde053a7de, type: 3}
       propertyPath: m_TagString
       value: Wall
       objectReference: {fileID: 0}
@@ -44275,6 +44328,10 @@ PrefabInstance:
     - target: {fileID: 8247180411267431805, guid: 5bf76cd6c95000543bf1a4cde053a7de, type: 3}
       propertyPath: m_Name
       value: CavernBoulder_01_Low (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8247180411267431805, guid: 5bf76cd6c95000543bf1a4cde053a7de, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8247180411267431805, guid: 5bf76cd6c95000543bf1a4cde053a7de, type: 3}
       propertyPath: m_TagString
@@ -47090,6 +47147,7 @@ MonoBehaviour:
   checkPointPos: {fileID: 1624752537}
   checkPointCaptured: 0
   captureVFX: {fileID: 3008228853618666769, guid: 1a2c705c13fca5147ad83ed8b0f7b4b8, type: 3}
+  SFX: {fileID: 8300000, guid: b742e56d6fbc8464ba1ebf94f02725b6, type: 3}
 --- !u!114 &1624752540
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -48075,6 +48133,10 @@ PrefabInstance:
       value: CavernBoulder_01_Low (1)
       objectReference: {fileID: 0}
     - target: {fileID: 8247180411267431805, guid: 5bf76cd6c95000543bf1a4cde053a7de, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8247180411267431805, guid: 5bf76cd6c95000543bf1a4cde053a7de, type: 3}
       propertyPath: m_TagString
       value: Wall
       objectReference: {fileID: 0}
@@ -48230,6 +48292,59 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 840146161}
   m_SourcePrefab: {fileID: 100100000, guid: 01e147e41fdb40e4c8a42f9b87df7425, type: 3}
+--- !u!1 &1655723855
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1655723857}
+  - component: {fileID: 1655723856}
+  m_Layer: 0
+  m_Name: Boundaries
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!135 &1655723856
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1655723855}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 51.3
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &1655723857
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1655723855}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 243.2, y: 11.3, z: 215.4}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1658265595
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -51227,6 +51342,7 @@ MonoBehaviour:
   checkPointPos: {fileID: 1768795727}
   checkPointCaptured: 0
   captureVFX: {fileID: 3008228853618666769, guid: 1a2c705c13fca5147ad83ed8b0f7b4b8, type: 3}
+  SFX: {fileID: 8300000, guid: b742e56d6fbc8464ba1ebf94f02725b6, type: 3}
 --- !u!114 &1768795730
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -55640,6 +55756,10 @@ PrefabInstance:
     - target: {fileID: 8247180411267431805, guid: 5bf76cd6c95000543bf1a4cde053a7de, type: 3}
       propertyPath: m_Name
       value: CavernBoulder_01_Low
+      objectReference: {fileID: 0}
+    - target: {fileID: 8247180411267431805, guid: 5bf76cd6c95000543bf1a4cde053a7de, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8247180411267431805, guid: 5bf76cd6c95000543bf1a4cde053a7de, type: 3}
       propertyPath: m_TagString
@@ -62148,6 +62268,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 268453413}
     m_Modifications:
+    - target: {fileID: 621688188805967802, guid: 9f7a22657dfd03c4fa9350fefdbbccbf, type: 3}
+      propertyPath: SFX
+      value: 
+      objectReference: {fileID: 8300000, guid: 1f09d41a1aae41a45be9f1a97909d955, type: 3}
     - target: {fileID: 4105649911905806452, guid: 9f7a22657dfd03c4fa9350fefdbbccbf, type: 3}
       propertyPath: m_LocalPosition.x
       value: -64.100006
@@ -63355,3 +63479,4 @@ SceneRoots:
   - {fileID: 40132273}
   - {fileID: 1280568671}
   - {fileID: 1827657193}
+  - {fileID: 1655723857}

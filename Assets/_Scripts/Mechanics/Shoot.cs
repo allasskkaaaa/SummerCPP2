@@ -7,14 +7,18 @@ public class Shoot : MonoBehaviour
     public Transform shootSpawn;
     public GameObject projectile;
     public GameObject shooter;
+    public AudioClip SFX;
 
     PlayerController pc;
     Animator anim;
+    SoundManager soundManager;
+
     // Start is called before the first frame update
     void Start()
     {
         pc = GetComponent<PlayerController>();
         anim = GetComponent<Animator>();
+        soundManager = FindObjectOfType<SoundManager>();
 
         if (shooter == null)
         {
@@ -41,6 +45,7 @@ public class Shoot : MonoBehaviour
             GameObject projectileInstance = Instantiate(projectile, shootSpawn.position, shootSpawn.rotation);
             Projectile projectileScript = projectileInstance.GetComponent<Projectile>();
             projectileScript.shooter = this.gameObject; // Assign the shooter
+            soundManager.playSFX(SFX);
         }
     }
 }

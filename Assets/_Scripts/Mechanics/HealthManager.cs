@@ -11,12 +11,15 @@ public class HealthManager : MonoBehaviour
     [SerializeField] private int maxHealth = 100;
     [SerializeField] private int maxLives;
     [SerializeField] public int lives = 1;
+    public AudioClip DamageSFX;
 
     [SerializeField] private TMP_Text healthText;
     
+    SoundManager soundManager;
     Animator anim;
     private void Start()
     {
+        soundManager = FindAnyObjectByType<SoundManager>();
         anim = GetComponent<Animator>();
         //bloodParticles.Stop();
 
@@ -51,6 +54,7 @@ public class HealthManager : MonoBehaviour
         health -= damage;
         Debug.Log(damage + " damage has been taken.");
         updateHealthBar();
+        soundManager.playSFX(DamageSFX);
         if (bloodParticles)
         {
             bloodParticles.Play();

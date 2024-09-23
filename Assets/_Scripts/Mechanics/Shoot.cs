@@ -32,7 +32,9 @@ public class Shoot : MonoBehaviour
         if (shooter.CompareTag("Player"))
             if (Input.GetKeyDown(KeyCode.LeftControl))
             {
-                if (pc.canShoot)
+                if (pc.canShoot) 
+                    anim.SetTrigger("shoot");
+                if (pc.canMelee)
                     anim.SetTrigger("shoot");
             }
 

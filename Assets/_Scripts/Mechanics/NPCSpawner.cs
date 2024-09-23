@@ -4,22 +4,47 @@ using UnityEngine;
 
 public class NPCSpawner : MonoBehaviour
 {
-    public GameObject npcType;
+    public GameObject npcType; // The NPC to be spawned
+    public AudioClip SFX; // Sound effect to play
 
-    public AudioClip SFX;
+    private SoundManager soundManager;
 
-    SoundManager soundManager;
+    private void Start()
+    {
+        soundManager = FindObjectOfType<SoundManager>(); // Initialize sound manager reference
+    }
 
+    // Detect collision events
     private void OnCollisionEnter(Collision collision)
     {
+        HandleSpawn(collision.gameObject);
+    }
+
+    // Detect trigger events
+    private void OnTriggerEnter(Collider other)
+    {
+        HandleSpawn(other.gameObject);
+    }
+
+    // Method to handle NPC spawning and sound effect playing
+    private void HandleSpawn(GameObject otherObject)
+    {
         Vector3 spawnPosition = new Vector3(transform.position.x, 10, transform.position.z);
-        Instantiate(npcType, spawnPosition, transform.rotation);
-        
-        soundManager = FindObjectOfType<SoundManager>();
-        soundManager.playSFX(SFX);
-        GameManager.Instance.NPCList.Add(npcType);
-        Destroy(collision.gameObject);
+
+        // Instantiate the NPC at the desired position and rotation
+        GameObject spawnedNPC = Instantiate(npcType, spawnPosition, transform.rotation);
+
+        // Play sound effect if sound manager and clip exist
+        if (soundManager != null && SFX != null)
+        {
+            soundManager.playSFX(SFX);
+        }
+
+        // Add the newly spawned NPC to the GameManager's NPCList
+        GameManager.Instance.NPCList.Add(spawnedNPC);
+
+        // Destroy the object that caused the event and the spawner itself
+        Destroy(otherObject);
         Destroy(gameObject);
-        
     }
 }

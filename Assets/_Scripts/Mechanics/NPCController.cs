@@ -60,15 +60,17 @@ public class NPCController : MonoBehaviour
             if (target != other.transform) // Only change target if it's not already the enemy
             {
                 target = other.transform;
+                follow(target);
                 Debug.Log("Enemy detected. Switching target.");
-            }
-
-            if (Vector3.Distance(transform.position, target.position) <= stoppingDistance)
-            {
-                // Trigger attack
                 isOccupied = true; // NPC is now occupied with combat
                 AttackEnemy();
             }
+
+            /*if (Vector3.Distance(transform.position, target.position) <= stoppingDistance)
+            {
+                // Trigger attack
+                
+            }*/
         }
     }
 
@@ -80,6 +82,7 @@ public class NPCController : MonoBehaviour
             anim.SetBool("attack", false);
             isOccupied = false;
             target = player;
+            follow(target);
             Debug.Log("Enemy left the radius. Returning to follow player.");
         }
     }

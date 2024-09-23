@@ -7,6 +7,7 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private int attackSpeed = 3;
     [SerializeField] private float followSpeed = 4f;
     [SerializeField] private float stoppingDistance = 2f;
+    [SerializeField] public Collider radius;
     private bool isAttacking = false;
     Animator anim;
     Rigidbody rb;

@@ -19795,7 +19795,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   NPCPrefab: {fileID: 8314127594421994087, guid: 68701caa1e05e0649b09f7caa223cef5, type: 3}
   NPCList: []
-  loadGameData: 1
+  loadGameData: 0
   playerPrefab: {fileID: 9071291066955798496, guid: bc2f0dced5498fc4d96d2ecd262c0990, type: 3}
   currentCheckpoint: {fileID: 0}
   inventorymanager: {fileID: 0}

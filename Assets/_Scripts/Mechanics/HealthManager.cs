@@ -80,7 +80,7 @@ public class HealthManager : MonoBehaviour
                     respawn();
                 }
             } 
-            
+            Destroy(gameObject);
         }
 
 

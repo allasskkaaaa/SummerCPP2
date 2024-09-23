@@ -18,7 +18,7 @@ public class Checkpoint : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         soundManager = FindObjectOfType<SoundManager>();
-        soundManager.playSFX(SFX);
+        
 
         if ( other.CompareTag("Player"))
         {
@@ -27,10 +27,13 @@ public class Checkpoint : MonoBehaviour
                 checkPointCaptured = true;
                 GameManager.Instance.UpdateCheckpoint(checkPointPos);
                 Instantiate(captureVFX, checkPointPos);
+
+                healthManager = other.gameObject.GetComponent<HealthManager>();
+                healthManager.AddHealth(healthRegain);
+                soundManager.playSFX(SFX);
             }
 
-            healthManager = other.gameObject.GetComponent<HealthManager>();
-            healthManager.AddHealth(healthRegain);
+            
         }
         
     }
